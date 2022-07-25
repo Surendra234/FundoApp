@@ -1,0 +1,847 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		249E823CDBEBDBF136E36EB9 /* Pods_LoginAppUsingScrollView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5EA2D2BCB23616947AF26CB5 /* Pods_LoginAppUsingScrollView.framework */; };
+		841B945E288B038C00CA760A /* SignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841B945D288B038C00CA760A /* SignUpVC.swift */; };
+		841B9460288B0A6B00CA760A /* ViewController+Exctension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841B945F288B0A6B00CA760A /* ViewController+Exctension.swift */; };
+		84333D36288A883A008F03D3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84333D35288A883A008F03D3 /* AppDelegate.swift */; };
+		84333D38288A883A008F03D3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84333D37288A883A008F03D3 /* SceneDelegate.swift */; };
+		84333D3A288A883A008F03D3 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84333D39288A883A008F03D3 /* LoginVC.swift */; };
+		84333D3D288A883B008F03D3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84333D3B288A883B008F03D3 /* Main.storyboard */; };
+		84333D3F288A883E008F03D3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84333D3E288A883E008F03D3 /* Assets.xcassets */; };
+		84333D42288A883E008F03D3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84333D40288A883E008F03D3 /* LaunchScreen.storyboard */; };
+		84333D4D288A883E008F03D3 /* LoginAppUsingScrollViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84333D4C288A883E008F03D3 /* LoginAppUsingScrollViewTests.swift */; };
+		84333D57288A883E008F03D3 /* LoginAppUsingScrollViewUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84333D56288A883E008F03D3 /* LoginAppUsingScrollViewUITests.swift */; };
+		84333D59288A883E008F03D3 /* LoginAppUsingScrollViewUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84333D58288A883E008F03D3 /* LoginAppUsingScrollViewUITestsLaunchTests.swift */; };
+		84538C33288D428100A3CD3E /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84538C32288D428100A3CD3E /* Constant.swift */; };
+		8465A9A8288CF1BF0017DA75 /* HomeDashboardVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8465A9A7288CF1BE0017DA75 /* HomeDashboardVC.swift */; };
+		8465A9AA288CF6500017DA75 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8465A9A9288CF6500017DA75 /* GoogleService-Info.plist */; };
+		8465A9B0288D07FD0017DA75 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 8465A9AF288D07FC0017DA75 /* FirebaseAnalytics */; };
+		84D1EF82288AB5100094DAAD /* String+Exctension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D1EF81288AB5100094DAAD /* String+Exctension.swift */; };
+		84D1EF84288AC1360094DAAD /* UIAlertController+Exctension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D1EF83288AC1360094DAAD /* UIAlertController+Exctension.swift */; };
+		84D22F02288D12B700B29BD9 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 84D22F01288D12B700B29BD9 /* FirebaseAuth */; };
+		84D22F04288D12B700B29BD9 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 84D22F03288D12B700B29BD9 /* FirebaseFirestore */; };
+		B5805644F0D886F89D356E38 /* Pods_LoginAppUsingScrollView_LoginAppUsingScrollViewUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06999AF34AF7BC2930839A31 /* Pods_LoginAppUsingScrollView_LoginAppUsingScrollViewUITests.framework */; };
+		F12E55CF6024580D222858C5 /* Pods_LoginAppUsingScrollViewTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 474B8AF36B3496C63E2C3663 /* Pods_LoginAppUsingScrollViewTests.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		84333D49288A883E008F03D3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 84333D2A288A883A008F03D3 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 84333D31288A883A008F03D3;
+			remoteInfo = LoginAppUsingScrollView;
+		};
+		84333D53288A883E008F03D3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 84333D2A288A883A008F03D3 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 84333D31288A883A008F03D3;
+			remoteInfo = LoginAppUsingScrollView;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		06999AF34AF7BC2930839A31 /* Pods_LoginAppUsingScrollView_LoginAppUsingScrollViewUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LoginAppUsingScrollView_LoginAppUsingScrollViewUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0E46265092AC7297FD001CBF /* Pods-LoginAppUsingScrollView-LoginAppUsingScrollViewUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LoginAppUsingScrollView-LoginAppUsingScrollViewUITests.debug.xcconfig"; path = "Target Support Files/Pods-LoginAppUsingScrollView-LoginAppUsingScrollViewUITests/Pods-LoginAppUsingScrollView-LoginAppUsingScrollViewUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		474B8AF36B3496C63E2C3663 /* Pods_LoginAppUsingScrollViewTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LoginAppUsingScrollViewTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		575E25EEB787D07649FC591D /* Pods-LoginAppUsingScrollViewTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LoginAppUsingScrollViewTests.debug.xcconfig"; path = "Target Support Files/Pods-LoginAppUsingScrollViewTests/Pods-LoginAppUsingScrollViewTests.debug.xcconfig"; sourceTree = "<group>"; };
+		5C3B008B44726E47D7193D47 /* Pods-LoginAppUsingScrollView.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LoginAppUsingScrollView.debug.xcconfig"; path = "Target Support Files/Pods-LoginAppUsingScrollView/Pods-LoginAppUsingScrollView.debug.xcconfig"; sourceTree = "<group>"; };
+		5EA2D2BCB23616947AF26CB5 /* Pods_LoginAppUsingScrollView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LoginAppUsingScrollView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		699E66E5204C0D915076B737 /* Pods-LoginAppUsingScrollView.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LoginAppUsingScrollView.release.xcconfig"; path = "Target Support Files/Pods-LoginAppUsingScrollView/Pods-LoginAppUsingScrollView.release.xcconfig"; sourceTree = "<group>"; };
+		841B945D288B038C00CA760A /* SignUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpVC.swift; sourceTree = "<group>"; };
+		841B945F288B0A6B00CA760A /* ViewController+Exctension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+Exctension.swift"; sourceTree = "<group>"; };
+		84333D32288A883A008F03D3 /* LoginAppUsingScrollView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LoginAppUsingScrollView.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		84333D35288A883A008F03D3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		84333D37288A883A008F03D3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		84333D39288A883A008F03D3 /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
+		84333D3C288A883B008F03D3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		84333D3E288A883E008F03D3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		84333D41288A883E008F03D3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		84333D43288A883E008F03D3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		84333D48288A883E008F03D3 /* LoginAppUsingScrollViewTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LoginAppUsingScrollViewTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		84333D4C288A883E008F03D3 /* LoginAppUsingScrollViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginAppUsingScrollViewTests.swift; sourceTree = "<group>"; };
+		84333D52288A883E008F03D3 /* LoginAppUsingScrollViewUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LoginAppUsingScrollViewUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		84333D56288A883E008F03D3 /* LoginAppUsingScrollViewUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginAppUsingScrollViewUITests.swift; sourceTree = "<group>"; };
+		84333D58288A883E008F03D3 /* LoginAppUsingScrollViewUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginAppUsingScrollViewUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		84538C32288D428100A3CD3E /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
+		8465A9A7288CF1BE0017DA75 /* HomeDashboardVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDashboardVC.swift; sourceTree = "<group>"; };
+		8465A9A9288CF6500017DA75 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		84D1EF81288AB5100094DAAD /* String+Exctension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Exctension.swift"; sourceTree = "<group>"; };
+		84D1EF83288AC1360094DAAD /* UIAlertController+Exctension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+Exctension.swift"; sourceTree = "<group>"; };
+		A711C3BD7D8A6138D0D6F8AF /* Pods-LoginAppUsingScrollViewTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LoginAppUsingScrollViewTests.release.xcconfig"; path = "Target Support Files/Pods-LoginAppUsingScrollViewTests/Pods-LoginAppUsingScrollViewTests.release.xcconfig"; sourceTree = "<group>"; };
+		E7A3A61F121C205D3BD91B37 /* Pods-LoginAppUsingScrollView-LoginAppUsingScrollViewUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LoginAppUsingScrollView-LoginAppUsingScrollViewUITests.release.xcconfig"; path = "Target Support Files/Pods-LoginAppUsingScrollView-LoginAppUsingScrollViewUITests/Pods-LoginAppUsingScrollView-LoginAppUsingScrollViewUITests.release.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		84333D2F288A883A008F03D3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8465A9B0288D07FD0017DA75 /* FirebaseAnalytics in Frameworks */,
+				84D22F04288D12B700B29BD9 /* FirebaseFirestore in Frameworks */,
+				84D22F02288D12B700B29BD9 /* FirebaseAuth in Frameworks */,
+				249E823CDBEBDBF136E36EB9 /* Pods_LoginAppUsingScrollView.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		84333D45288A883E008F03D3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F12E55CF6024580D222858C5 /* Pods_LoginAppUsingScrollViewTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		84333D4F288A883E008F03D3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B5805644F0D886F89D356E38 /* Pods_LoginAppUsingScrollView_LoginAppUsingScrollViewUITests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		461E922312DD9D5B35EC11C3 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				5C3B008B44726E47D7193D47 /* Pods-LoginAppUsingScrollView.debug.xcconfig */,
+				699E66E5204C0D915076B737 /* Pods-LoginAppUsingScrollView.release.xcconfig */,
+				0E46265092AC7297FD001CBF /* Pods-LoginAppUsingScrollView-LoginAppUsingScrollViewUITests.debug.xcconfig */,
+				E7A3A61F121C205D3BD91B37 /* Pods-LoginAppUsingScrollView-LoginAppUsingScrollViewUITests.release.xcconfig */,
+				575E25EEB787D07649FC591D /* Pods-LoginAppUsingScrollViewTests.debug.xcconfig */,
+				A711C3BD7D8A6138D0D6F8AF /* Pods-LoginAppUsingScrollViewTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		49614869C67266DC67B85EB4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5EA2D2BCB23616947AF26CB5 /* Pods_LoginAppUsingScrollView.framework */,
+				06999AF34AF7BC2930839A31 /* Pods_LoginAppUsingScrollView_LoginAppUsingScrollViewUITests.framework */,
+				474B8AF36B3496C63E2C3663 /* Pods_LoginAppUsingScrollViewTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		841B945A288AFDDE00CA760A /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				841B945D288B038C00CA760A /* SignUpVC.swift */,
+				84333D39288A883A008F03D3 /* LoginVC.swift */,
+				8465A9A7288CF1BE0017DA75 /* HomeDashboardVC.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		84333D29288A883A008F03D3 = {
+			isa = PBXGroup;
+			children = (
+				84333D34288A883A008F03D3 /* LoginAppUsingScrollView */,
+				84333D4B288A883E008F03D3 /* LoginAppUsingScrollViewTests */,
+				84333D55288A883E008F03D3 /* LoginAppUsingScrollViewUITests */,
+				84333D33288A883A008F03D3 /* Products */,
+				461E922312DD9D5B35EC11C3 /* Pods */,
+				49614869C67266DC67B85EB4 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		84333D33288A883A008F03D3 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				84333D32288A883A008F03D3 /* LoginAppUsingScrollView.app */,
+				84333D48288A883E008F03D3 /* LoginAppUsingScrollViewTests.xctest */,
+				84333D52288A883E008F03D3 /* LoginAppUsingScrollViewUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		84333D34288A883A008F03D3 /* LoginAppUsingScrollView */ = {
+			isa = PBXGroup;
+			children = (
+				84333D35288A883A008F03D3 /* AppDelegate.swift */,
+				84333D37288A883A008F03D3 /* SceneDelegate.swift */,
+				84538C31288D426E00A3CD3E /* Helper */,
+				84D1EF80288AB4850094DAAD /* Exctension */,
+				841B945A288AFDDE00CA760A /* ViewController */,
+				84333D3B288A883B008F03D3 /* Main.storyboard */,
+				84333D3E288A883E008F03D3 /* Assets.xcassets */,
+				84333D40288A883E008F03D3 /* LaunchScreen.storyboard */,
+				8465A9A9288CF6500017DA75 /* GoogleService-Info.plist */,
+				84333D43288A883E008F03D3 /* Info.plist */,
+			);
+			path = LoginAppUsingScrollView;
+			sourceTree = "<group>";
+		};
+		84333D4B288A883E008F03D3 /* LoginAppUsingScrollViewTests */ = {
+			isa = PBXGroup;
+			children = (
+				84333D4C288A883E008F03D3 /* LoginAppUsingScrollViewTests.swift */,
+			);
+			path = LoginAppUsingScrollViewTests;
+			sourceTree = "<group>";
+		};
+		84333D55288A883E008F03D3 /* LoginAppUsingScrollViewUITests */ = {
+			isa = PBXGroup;
+			children = (
+				84333D56288A883E008F03D3 /* LoginAppUsingScrollViewUITests.swift */,
+				84333D58288A883E008F03D3 /* LoginAppUsingScrollViewUITestsLaunchTests.swift */,
+			);
+			path = LoginAppUsingScrollViewUITests;
+			sourceTree = "<group>";
+		};
+		84538C31288D426E00A3CD3E /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				84538C32288D428100A3CD3E /* Constant.swift */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
+		84D1EF80288AB4850094DAAD /* Exctension */ = {
+			isa = PBXGroup;
+			children = (
+				84D1EF81288AB5100094DAAD /* String+Exctension.swift */,
+				841B945F288B0A6B00CA760A /* ViewController+Exctension.swift */,
+				84D1EF83288AC1360094DAAD /* UIAlertController+Exctension.swift */,
+			);
+			path = Exctension;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		84333D31288A883A008F03D3 /* LoginAppUsingScrollView */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 84333D5C288A883E008F03D3 /* Build configuration list for PBXNativeTarget "LoginAppUsingScrollView" */;
+			buildPhases = (
+				672124BD777399F8AE665786 /* [CP] Check Pods Manifest.lock */,
+				84333D2E288A883A008F03D3 /* Sources */,
+				84333D2F288A883A008F03D3 /* Frameworks */,
+				84333D30288A883A008F03D3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = LoginAppUsingScrollView;
+			packageProductDependencies = (
+				8465A9AF288D07FC0017DA75 /* FirebaseAnalytics */,
+				84D22F01288D12B700B29BD9 /* FirebaseAuth */,
+				84D22F03288D12B700B29BD9 /* FirebaseFirestore */,
+			);
+			productName = LoginAppUsingScrollView;
+			productReference = 84333D32288A883A008F03D3 /* LoginAppUsingScrollView.app */;
+			productType = "com.apple.product-type.application";
+		};
+		84333D47288A883E008F03D3 /* LoginAppUsingScrollViewTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 84333D5F288A883E008F03D3 /* Build configuration list for PBXNativeTarget "LoginAppUsingScrollViewTests" */;
+			buildPhases = (
+				C2095FF462BF7BCE7B2FB0C3 /* [CP] Check Pods Manifest.lock */,
+				84333D44288A883E008F03D3 /* Sources */,
+				84333D45288A883E008F03D3 /* Frameworks */,
+				84333D46288A883E008F03D3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				84333D4A288A883E008F03D3 /* PBXTargetDependency */,
+			);
+			name = LoginAppUsingScrollViewTests;
+			productName = LoginAppUsingScrollViewTests;
+			productReference = 84333D48288A883E008F03D3 /* LoginAppUsingScrollViewTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		84333D51288A883E008F03D3 /* LoginAppUsingScrollViewUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 84333D62288A883E008F03D3 /* Build configuration list for PBXNativeTarget "LoginAppUsingScrollViewUITests" */;
+			buildPhases = (
+				DD573F5F954773C89F1FE723 /* [CP] Check Pods Manifest.lock */,
+				84333D4E288A883E008F03D3 /* Sources */,
+				84333D4F288A883E008F03D3 /* Frameworks */,
+				84333D50288A883E008F03D3 /* Resources */,
+				F4935CE744893D7F5EDB94F8 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				84333D54288A883E008F03D3 /* PBXTargetDependency */,
+			);
+			name = LoginAppUsingScrollViewUITests;
+			productName = LoginAppUsingScrollViewUITests;
+			productReference = 84333D52288A883E008F03D3 /* LoginAppUsingScrollViewUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		84333D2A288A883A008F03D3 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1340;
+				LastUpgradeCheck = 1340;
+				TargetAttributes = {
+					84333D31288A883A008F03D3 = {
+						CreatedOnToolsVersion = 13.4.1;
+					};
+					84333D47288A883E008F03D3 = {
+						CreatedOnToolsVersion = 13.4.1;
+						TestTargetID = 84333D31288A883A008F03D3;
+					};
+					84333D51288A883E008F03D3 = {
+						CreatedOnToolsVersion = 13.4.1;
+						TestTargetID = 84333D31288A883A008F03D3;
+					};
+				};
+			};
+			buildConfigurationList = 84333D2D288A883A008F03D3 /* Build configuration list for PBXProject "LoginAppUsingScrollView" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 84333D29288A883A008F03D3;
+			packageReferences = (
+				8465A9AE288D07FC0017DA75 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				84D22F00288D12B700B29BD9 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
+			productRefGroup = 84333D33288A883A008F03D3 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				84333D31288A883A008F03D3 /* LoginAppUsingScrollView */,
+				84333D47288A883E008F03D3 /* LoginAppUsingScrollViewTests */,
+				84333D51288A883E008F03D3 /* LoginAppUsingScrollViewUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		84333D30288A883A008F03D3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				84333D42288A883E008F03D3 /* LaunchScreen.storyboard in Resources */,
+				8465A9AA288CF6500017DA75 /* GoogleService-Info.plist in Resources */,
+				84333D3F288A883E008F03D3 /* Assets.xcassets in Resources */,
+				84333D3D288A883B008F03D3 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		84333D46288A883E008F03D3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		84333D50288A883E008F03D3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		672124BD777399F8AE665786 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-LoginAppUsingScrollView-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C2095FF462BF7BCE7B2FB0C3 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-LoginAppUsingScrollViewTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DD573F5F954773C89F1FE723 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-LoginAppUsingScrollView-LoginAppUsingScrollViewUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F4935CE744893D7F5EDB94F8 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-LoginAppUsingScrollView-LoginAppUsingScrollViewUITests/Pods-LoginAppUsingScrollView-LoginAppUsingScrollViewUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-LoginAppUsingScrollView-LoginAppUsingScrollViewUITests/Pods-LoginAppUsingScrollView-LoginAppUsingScrollViewUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-LoginAppUsingScrollView-LoginAppUsingScrollViewUITests/Pods-LoginAppUsingScrollView-LoginAppUsingScrollViewUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		84333D2E288A883A008F03D3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				84D1EF84288AC1360094DAAD /* UIAlertController+Exctension.swift in Sources */,
+				84D1EF82288AB5100094DAAD /* String+Exctension.swift in Sources */,
+				8465A9A8288CF1BF0017DA75 /* HomeDashboardVC.swift in Sources */,
+				84333D3A288A883A008F03D3 /* LoginVC.swift in Sources */,
+				84333D36288A883A008F03D3 /* AppDelegate.swift in Sources */,
+				841B945E288B038C00CA760A /* SignUpVC.swift in Sources */,
+				84333D38288A883A008F03D3 /* SceneDelegate.swift in Sources */,
+				84538C33288D428100A3CD3E /* Constant.swift in Sources */,
+				841B9460288B0A6B00CA760A /* ViewController+Exctension.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		84333D44288A883E008F03D3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				84333D4D288A883E008F03D3 /* LoginAppUsingScrollViewTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		84333D4E288A883E008F03D3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				84333D57288A883E008F03D3 /* LoginAppUsingScrollViewUITests.swift in Sources */,
+				84333D59288A883E008F03D3 /* LoginAppUsingScrollViewUITestsLaunchTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		84333D4A288A883E008F03D3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 84333D31288A883A008F03D3 /* LoginAppUsingScrollView */;
+			targetProxy = 84333D49288A883E008F03D3 /* PBXContainerItemProxy */;
+		};
+		84333D54288A883E008F03D3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 84333D31288A883A008F03D3 /* LoginAppUsingScrollView */;
+			targetProxy = 84333D53288A883E008F03D3 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		84333D3B288A883B008F03D3 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				84333D3C288A883B008F03D3 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		84333D40288A883E008F03D3 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				84333D41288A883E008F03D3 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		84333D5A288A883E008F03D3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		84333D5B288A883E008F03D3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		84333D5D288A883E008F03D3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5C3B008B44726E47D7193D47 /* Pods-LoginAppUsingScrollView.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 34ZY4UYRXV;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = LoginAppUsingScrollView/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bridgelabz.LoginAppUsingScrollView;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		84333D5E288A883E008F03D3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 699E66E5204C0D915076B737 /* Pods-LoginAppUsingScrollView.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 34ZY4UYRXV;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = LoginAppUsingScrollView/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bridgelabz.LoginAppUsingScrollView;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		84333D60288A883E008F03D3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 575E25EEB787D07649FC591D /* Pods-LoginAppUsingScrollViewTests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 34ZY4UYRXV;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bridgelabz.LoginAppUsingScrollViewTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LoginAppUsingScrollView.app/LoginAppUsingScrollView";
+			};
+			name = Debug;
+		};
+		84333D61288A883E008F03D3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A711C3BD7D8A6138D0D6F8AF /* Pods-LoginAppUsingScrollViewTests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 34ZY4UYRXV;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bridgelabz.LoginAppUsingScrollViewTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LoginAppUsingScrollView.app/LoginAppUsingScrollView";
+			};
+			name = Release;
+		};
+		84333D63288A883E008F03D3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0E46265092AC7297FD001CBF /* Pods-LoginAppUsingScrollView-LoginAppUsingScrollViewUITests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 34ZY4UYRXV;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bridgelabz.LoginAppUsingScrollViewUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = LoginAppUsingScrollView;
+			};
+			name = Debug;
+		};
+		84333D64288A883E008F03D3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E7A3A61F121C205D3BD91B37 /* Pods-LoginAppUsingScrollView-LoginAppUsingScrollViewUITests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 34ZY4UYRXV;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bridgelabz.LoginAppUsingScrollViewUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = LoginAppUsingScrollView;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		84333D2D288A883A008F03D3 /* Build configuration list for PBXProject "LoginAppUsingScrollView" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				84333D5A288A883E008F03D3 /* Debug */,
+				84333D5B288A883E008F03D3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		84333D5C288A883E008F03D3 /* Build configuration list for PBXNativeTarget "LoginAppUsingScrollView" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				84333D5D288A883E008F03D3 /* Debug */,
+				84333D5E288A883E008F03D3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		84333D5F288A883E008F03D3 /* Build configuration list for PBXNativeTarget "LoginAppUsingScrollViewTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				84333D60288A883E008F03D3 /* Debug */,
+				84333D61288A883E008F03D3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		84333D62288A883E008F03D3 /* Build configuration list for PBXNativeTarget "LoginAppUsingScrollViewUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				84333D63288A883E008F03D3 /* Debug */,
+				84333D64288A883E008F03D3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		8465A9AE288D07FC0017DA75 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 9.0.0;
+			};
+		};
+		84D22F00288D12B700B29BD9 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		8465A9AF288D07FC0017DA75 /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8465A9AE288D07FC0017DA75 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		84D22F01288D12B700B29BD9 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 84D22F00288D12B700B29BD9 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		84D22F03288D12B700B29BD9 /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 84D22F00288D12B700B29BD9 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 84333D2A288A883A008F03D3 /* Project object */;
+}

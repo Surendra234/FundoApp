@@ -1,0 +1,6 @@
+framework module Pods_LoginAppUsingScrollView {
+  umbrella header "Pods-LoginAppUsingScrollView-umbrella.h"
+
+  export *
+  module * { export * }
+}
