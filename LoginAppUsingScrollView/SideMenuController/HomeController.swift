@@ -26,11 +26,11 @@ class HomeController: UIViewController {
     // Handlers
     
     @objc func handleMenu() {
-        delegate?.handleMenu()
+        delegate?.handleMenu(forMenuOption: nil)
     }
     
     func configureNavigationBar() {
-        //navigationController?.navigationBar.barTintColor = .red
+        //navigationController?.navigationBar.backgroundColor = .darkGray
         navigationController?.navigationBar.barStyle = .black
         
         navigationItem.title = "DashBoard"

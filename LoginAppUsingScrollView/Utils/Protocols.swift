@@ -8,5 +8,5 @@
 
 protocol HomeControllerDeleget {
     
-    func handleMenu()
+    func handleMenu(forMenuOption menuOption: MenuOption?)
 }

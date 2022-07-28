@@ -56,5 +56,11 @@ class LoginVC: UIViewController {
         let signupVC = self.storyboard?.instantiateViewController(withIdentifier: "SignUpVC") as! SignUpVC
         self.navigationController?.pushViewController(signupVC, animated: true)
     }
+    
+    @IBAction func PowerButton(_ sender: UIButton) {
+        let homeController = ContainerControllerVC()
+        self.navigationController?.pushViewController(homeController, animated: true)
+    }
+    
 }
 

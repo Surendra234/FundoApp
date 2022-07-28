@@ -12,7 +12,9 @@ class ContainerControllerVC: UIViewController {
     
     // Properties
 
-    var menuController: UIViewController!
+    var menuController: MenuController!
+    var centerController: UIViewController!
+    var isExpanded = false
     
     // Init
     
@@ -32,17 +34,18 @@ class ContainerControllerVC: UIViewController {
         
         let homeController = HomeController()
         homeController.delegate = self
-        let controller = UINavigationController(rootViewController: homeController)
+        centerController = UINavigationController(rootViewController: homeController)
         
-        view.addSubview(controller.view)
-        addChild(controller)
-        controller.didMove(toParent: self)
+        view.addSubview(centerController.view)
+        addChild(centerController)
+        centerController.didMove(toParent: self)
     }
     
     func configureMenuController() {
         
         if menuController == nil {
             menuController = MenuController()
+            menuController.delegate = self
             view.insertSubview(menuController.view, at: 0)
             addChild(menuController)
             menuController.didMove(toParent: self)
@@ -51,17 +54,55 @@ class ContainerControllerVC: UIViewController {
     }
     
     
-    func showMenuController(shouldExpand: Bool) {
+    func showMenuController(shouldExpand: Bool, menuOption: MenuOption?) {
         
         if shouldExpand {
             // show menu
-            //UIView.animate
+            
+            UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: .curveEaseInOut, animations: {
+                
+                self.centerController.view.frame.origin.x = self.centerController.view.frame.width - 80
+                
+            }, completion: nil)
+        }
+        else {
+            // hide menu
+            UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: .curveEaseInOut, animations: {
+                
+                                
+            }, completion: nil)
+            
+            UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: .curveEaseInOut, animations: {
+                self.centerController.view.frame.origin.x = 0
+            }) { (_) in
+                guard let menuOption = menuOption else { return }
+
+                self.didSelectMenuOption(menuOption: menuOption)
+            }
+        }
+    }
+    
+    func didSelectMenuOption(menuOption: MenuOption) {
+        switch menuOption {
+        case .Profile:
+            print("profile")
+        case .Notes:
+            print("Inbox")
+        case .Notification:
+            print("notes")
+        case .Settings:
+            print("setting")
         }
     }
 }
 
 extension ContainerControllerVC: HomeControllerDeleget {
-    func handleMenu() {
-        configureMenuController()
+    func handleMenu(forMenuOption menuOption: MenuOption?) {
+        if !isExpanded {
+            configureMenuController()
+        }
+        
+        isExpanded = !isExpanded
+        showMenuController(shouldExpand: isExpanded, menuOption: menuOption)
     }
 }

@@ -28,8 +28,8 @@
 		84538C33288D428100A3CD3E /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84538C32288D428100A3CD3E /* Constant.swift */; };
 		8465A9AA288CF6500017DA75 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8465A9A9288CF6500017DA75 /* GoogleService-Info.plist */; };
 		8465A9B0288D07FD0017DA75 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 8465A9AF288D07FC0017DA75 /* FirebaseAnalytics */; };
-		84C9EB24288E885000E0EAF1 /* HomeDashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C9EB23288E885000E0EAF1 /* HomeDashboardViewController.swift */; };
-		84C9EB26288E89F000E0EAF1 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C9EB25288E89F000E0EAF1 /* TableViewCell.swift */; };
+		84BC836B2892A84100A372B2 /* MenuOptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BC836A2892A84100A372B2 /* MenuOptionCell.swift */; };
+		84BC836E2892B2D600A372B2 /* MenuOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BC836D2892B2D600A372B2 /* MenuOption.swift */; };
 		84D1EF82288AB5100094DAAD /* String+Exctension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D1EF81288AB5100094DAAD /* String+Exctension.swift */; };
 		84D1EF84288AC1360094DAAD /* UIAlertController+Exctension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D1EF83288AC1360094DAAD /* UIAlertController+Exctension.swift */; };
 		84D22F02288D12B700B29BD9 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 84D22F01288D12B700B29BD9 /* FirebaseAuth */; };
@@ -85,8 +85,8 @@
 		8447C4A2288EC1D100639F41 /* MenuController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuController.swift; sourceTree = "<group>"; };
 		84538C32288D428100A3CD3E /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		8465A9A9288CF6500017DA75 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		84C9EB23288E885000E0EAF1 /* HomeDashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDashboardViewController.swift; sourceTree = "<group>"; };
-		84C9EB25288E89F000E0EAF1 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
+		84BC836A2892A84100A372B2 /* MenuOptionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuOptionCell.swift; sourceTree = "<group>"; };
+		84BC836D2892B2D600A372B2 /* MenuOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuOption.swift; sourceTree = "<group>"; };
 		84D1EF81288AB5100094DAAD /* String+Exctension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Exctension.swift"; sourceTree = "<group>"; };
 		84D1EF83288AC1360094DAAD /* UIAlertController+Exctension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+Exctension.swift"; sourceTree = "<group>"; };
 		84D83859288F05A00030B267 /* Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
@@ -155,11 +155,19 @@
 			children = (
 				84333D39288A883A008F03D3 /* LoginVC.swift */,
 				841B945D288B038C00CA760A /* SignUpVC.swift */,
-				84C9EB23288E885000E0EAF1 /* HomeDashboardViewController.swift */,
-				84C9EB25288E89F000E0EAF1 /* TableViewCell.swift */,
 				842E30D52892853C0086A85B /* FBLoginVC.swift */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		842E30D7289298D80086A85B /* view */ = {
+			isa = PBXGroup;
+			children = (
+				84333D3B288A883B008F03D3 /* Main.storyboard */,
+				84333D40288A883E008F03D3 /* LaunchScreen.storyboard */,
+				84BC836A2892A84100A372B2 /* MenuOptionCell.swift */,
+			);
+			path = view;
 			sourceTree = "<group>";
 		};
 		84333D29288A883A008F03D3 = {
@@ -190,13 +198,12 @@
 				84333D35288A883A008F03D3 /* AppDelegate.swift */,
 				84333D37288A883A008F03D3 /* SceneDelegate.swift */,
 				84411549288F03900057C92A /* Utils */,
-				84538C31288D426E00A3CD3E /* Helper */,
 				84D1EF80288AB4850094DAAD /* Exctension */,
+				84BC836C2892B28E00A372B2 /* Model */,
 				8447C49D288EC01C00639F41 /* SideMenuController */,
 				841B945A288AFDDE00CA760A /* Controller */,
-				84333D3B288A883B008F03D3 /* Main.storyboard */,
+				842E30D7289298D80086A85B /* view */,
 				84333D3E288A883E008F03D3 /* Assets.xcassets */,
-				84333D40288A883E008F03D3 /* LaunchScreen.storyboard */,
 				8465A9A9288CF6500017DA75 /* GoogleService-Info.plist */,
 				84333D43288A883E008F03D3 /* Info.plist */,
 			);
@@ -224,6 +231,7 @@
 			isa = PBXGroup;
 			children = (
 				84D83859288F05A00030B267 /* Protocols.swift */,
+				84538C32288D428100A3CD3E /* Constant.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -238,12 +246,12 @@
 			path = SideMenuController;
 			sourceTree = "<group>";
 		};
-		84538C31288D426E00A3CD3E /* Helper */ = {
+		84BC836C2892B28E00A372B2 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				84538C32288D428100A3CD3E /* Constant.swift */,
+				84BC836D2892B2D600A372B2 /* MenuOption.swift */,
 			);
-			path = Helper;
+			path = Model;
 			sourceTree = "<group>";
 		};
 		84D1EF80288AB4850094DAAD /* Exctension */ = {
@@ -474,18 +482,18 @@
 			files = (
 				84D1EF84288AC1360094DAAD /* UIAlertController+Exctension.swift in Sources */,
 				84D1EF82288AB5100094DAAD /* String+Exctension.swift in Sources */,
-				84C9EB24288E885000E0EAF1 /* HomeDashboardViewController.swift in Sources */,
 				84333D3A288A883A008F03D3 /* LoginVC.swift in Sources */,
 				84333D36288A883A008F03D3 /* AppDelegate.swift in Sources */,
 				841B945E288B038C00CA760A /* SignUpVC.swift in Sources */,
-				84C9EB26288E89F000E0EAF1 /* TableViewCell.swift in Sources */,
 				84333D38288A883A008F03D3 /* SceneDelegate.swift in Sources */,
 				8447C4A1288EC1B500639F41 /* HomeController.swift in Sources */,
+				84BC836B2892A84100A372B2 /* MenuOptionCell.swift in Sources */,
 				84D8385A288F05A00030B267 /* Protocols.swift in Sources */,
 				8447C49F288EC07100639F41 /* ContainerControllerVC.swift in Sources */,
 				842E30D62892853C0086A85B /* FBLoginVC.swift in Sources */,
 				84538C33288D428100A3CD3E /* Constant.swift in Sources */,
 				8447C4A3288EC1D100639F41 /* MenuController.swift in Sources */,
+				84BC836E2892B2D600A372B2 /* MenuOption.swift in Sources */,
 				841B9460288B0A6B00CA760A /* LoginVC+Exctension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
