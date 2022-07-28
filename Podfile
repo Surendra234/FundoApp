@@ -14,10 +14,10 @@ target 'LoginAppUsingScrollView' do
 
   target 'LoginAppUsingScrollViewUITests' do
     # Pods for testing
-     pod 'FirebaseAnalytics'
-     pod 'FirebaseAuth'
-     pod 'FirebaseCore'
-     pod 'FirebaseFirestore'
+     #pod 'FirebaseAnalytics'
+     #pod 'FirebaseAuth'
+     #pod 'FirebaseCore'
+     #pod 'FirebaseFirestore'
   end
 
 end
