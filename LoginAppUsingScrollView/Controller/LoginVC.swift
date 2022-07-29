@@ -7,6 +7,7 @@
 
 import UIKit
 import FirebaseAuth
+import GoogleSignIn
 
 class LoginVC: UIViewController {
     
@@ -29,8 +30,11 @@ class LoginVC: UIViewController {
     
     @IBAction func loginButtonClick(_ sender: UIButton) {
         
-        let email = emailTextField.text!
-        let password = passwordTextField.text!
+        //let email = emailTextField.text!
+        //let password = passwordTextField.text!
+        
+        guard let email = emailTextField.text else { return }
+        guard let password = passwordTextField.text else { return }
         
         validDetailsCheck()
         

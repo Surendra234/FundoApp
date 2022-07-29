@@ -25,7 +25,6 @@
 		8447C49F288EC07100639F41 /* ContainerControllerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8447C49E288EC07100639F41 /* ContainerControllerVC.swift */; };
 		8447C4A1288EC1B500639F41 /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8447C4A0288EC1B500639F41 /* HomeController.swift */; };
 		8447C4A3288EC1D100639F41 /* MenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8447C4A2288EC1D100639F41 /* MenuController.swift */; };
-		84538C33288D428100A3CD3E /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84538C32288D428100A3CD3E /* Constant.swift */; };
 		8465A9AA288CF6500017DA75 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8465A9A9288CF6500017DA75 /* GoogleService-Info.plist */; };
 		8465A9B0288D07FD0017DA75 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 8465A9AF288D07FC0017DA75 /* FirebaseAnalytics */; };
 		84BC836B2892A84100A372B2 /* MenuOptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BC836A2892A84100A372B2 /* MenuOptionCell.swift */; };
@@ -83,7 +82,6 @@
 		8447C49E288EC07100639F41 /* ContainerControllerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerControllerVC.swift; sourceTree = "<group>"; };
 		8447C4A0288EC1B500639F41 /* HomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
 		8447C4A2288EC1D100639F41 /* MenuController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuController.swift; sourceTree = "<group>"; };
-		84538C32288D428100A3CD3E /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		8465A9A9288CF6500017DA75 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		84BC836A2892A84100A372B2 /* MenuOptionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuOptionCell.swift; sourceTree = "<group>"; };
 		84BC836D2892B2D600A372B2 /* MenuOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuOption.swift; sourceTree = "<group>"; };
@@ -231,7 +229,6 @@
 			isa = PBXGroup;
 			children = (
 				84D83859288F05A00030B267 /* Protocols.swift */,
-				84538C32288D428100A3CD3E /* Constant.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -275,6 +272,7 @@
 				84333D2E288A883A008F03D3 /* Sources */,
 				84333D2F288A883A008F03D3 /* Frameworks */,
 				84333D30288A883A008F03D3 /* Resources */,
+				F29556DE218313D419B7A450 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -319,6 +317,7 @@
 				84333D4E288A883E008F03D3 /* Sources */,
 				84333D4F288A883E008F03D3 /* Frameworks */,
 				84333D50288A883E008F03D3 /* Resources */,
+				F493DDB2B48EBCB5AF58BE67 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -473,6 +472,40 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		F29556DE218313D419B7A450 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-LoginAppUsingScrollView/Pods-LoginAppUsingScrollView-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-LoginAppUsingScrollView/Pods-LoginAppUsingScrollView-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-LoginAppUsingScrollView/Pods-LoginAppUsingScrollView-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F493DDB2B48EBCB5AF58BE67 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-LoginAppUsingScrollView-LoginAppUsingScrollViewUITests/Pods-LoginAppUsingScrollView-LoginAppUsingScrollViewUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-LoginAppUsingScrollView-LoginAppUsingScrollViewUITests/Pods-LoginAppUsingScrollView-LoginAppUsingScrollViewUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-LoginAppUsingScrollView-LoginAppUsingScrollViewUITests/Pods-LoginAppUsingScrollView-LoginAppUsingScrollViewUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -491,7 +524,6 @@
 				84D8385A288F05A00030B267 /* Protocols.swift in Sources */,
 				8447C49F288EC07100639F41 /* ContainerControllerVC.swift in Sources */,
 				842E30D62892853C0086A85B /* FBLoginVC.swift in Sources */,
-				84538C33288D428100A3CD3E /* Constant.swift in Sources */,
 				8447C4A3288EC1D100639F41 /* MenuController.swift in Sources */,
 				84BC836E2892B2D600A372B2 /* MenuOption.swift in Sources */,
 				841B9460288B0A6B00CA760A /* LoginVC+Exctension.swift in Sources */,
