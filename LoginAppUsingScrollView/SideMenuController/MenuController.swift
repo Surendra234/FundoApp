@@ -12,7 +12,7 @@ private let reuseIdentifire = "MenuOptionCell"
 class MenuController: UIViewController {
 
     // Properties
-    
+
     var tableView: UITableView!
     var delegate: HomeControllerDeleget?
     
@@ -21,7 +21,9 @@ class MenuController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureTableView()
+        
     }
+
     
     // Handler
     
@@ -43,7 +45,6 @@ class MenuController: UIViewController {
         tableView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
         tableView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
     }
-    
 }
 
 extension MenuController: UITableViewDelegate, UITableViewDataSource {

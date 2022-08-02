@@ -46,7 +46,7 @@ class SignUpVC: UIViewController {
     @IBAction func signUpButtonClick(_ sender: UIButton) {
         let systemImg = UIImage(systemName: "person")
         
-        if imageProfile.image?.pngData() != systemImg?.pngData() {
+          if imageProfile.image?.pngData() != systemImg?.pngData() {
             
             if let email = textEmail.text, let username = textUsername.text, let password = textPassword.text, let confirmPassword = textConfirmPassword.text {
                 

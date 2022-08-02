@@ -22,7 +22,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate{
                )
         
         FirebaseApp.configure()
-        //GIDSignIn.sharedInstance.handle(219924410670-l45h80eonnch9p01sqtcovuhbsjqjbdc.apps.googleusercontent.com)
         return true
     }
     
@@ -31,14 +30,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate{
           open url: URL,
           options: [UIApplication.OpenURLOptionsKey : Any] = [:]
       ) -> Bool {
-          ApplicationDelegate.shared.application(
+          
+          var flage: Bool = false
+          
+          if ApplicationDelegate.shared.application(
               app,
               open: url,
               sourceApplication: options[UIApplication.OpenURLOptionsKey.sourceApplication] as? String,
               annotation: options[UIApplication.OpenURLOptionsKey.annotation]
-          )
+          ) {
+              //Facebook URL
+              flage = ApplicationDelegate.shared.application(
+                  app,
+                  open: url,
+                  sourceApplication: options[UIApplication.OpenURLOptionsKey.sourceApplication] as? String,
+                  annotation: options[UIApplication.OpenURLOptionsKey.annotation]
+              )
+          }
+          else {
+             // Google URL
+             flage = GIDSignIn.sharedInstance.handle(url)
+          }
           
-          //GIDSignIn.sharedInstance.handle(url)
+          return flage
       }
 
     // MARK: UISceneSession Lifecycle

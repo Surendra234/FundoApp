@@ -13,14 +13,14 @@ enum MenuOption: Int, CustomStringConvertible {
     case Profile
     case Notes
     case Notification
-    case Settings
+    case Setting
     
     var description: String {
         switch self {
         case .Profile: return "Profile"
         case .Notes: return "notes"
         case .Notification: return "Notification"
-        case .Settings: return "Settings"
+        case .Setting: return "SignOut"
         }
     }
     
@@ -32,7 +32,7 @@ enum MenuOption: Int, CustomStringConvertible {
             return UIImage(named: "notes") ?? UIImage()
         case .Notification:
             return UIImage(named: "notification") ?? UIImage()
-        case .Settings:
+        case .Setting:
             return UIImage(named: "setting") ?? UIImage()
         }
     }

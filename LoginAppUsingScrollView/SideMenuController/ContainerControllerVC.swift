@@ -6,11 +6,16 @@
 //
 
 import UIKit
+import FBSDKLoginKit
+import FirebaseAuth
+import FacebookLogin
+import GoogleSignIn
 
 class ContainerControllerVC: UIViewController {
-
+    
     // Properties
-
+    
+    private var loginManager = LoginManager()
     var menuController: MenuController!
     var centerController: UIViewController!
     var isExpanded = false
@@ -74,12 +79,12 @@ class ContainerControllerVC: UIViewController {
         }
         else {
             // hide menu
-           
+            
             UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: .curveEaseInOut, animations: {
                 self.centerController.view.frame.origin.x = 0
             }) { (_) in
                 guard let menuOption = menuOption else { return }
-
+                
                 self.didSelectMenuOption(menuOption: menuOption)
             }
         }
@@ -89,14 +94,20 @@ class ContainerControllerVC: UIViewController {
     
     func didSelectMenuOption(menuOption: MenuOption) {
         switch menuOption {
+            
         case .Profile:
             print("profile")
+            
         case .Notes:
             print("Inbox")
+            
         case .Notification:
             print("notes")
-        case .Settings:
-            print("setting")
+            
+            
+        case .Setting:
+            print("Setting")
+            SignOut()
         }
     }
     
@@ -106,6 +117,22 @@ class ContainerControllerVC: UIViewController {
             self.setNeedsStatusBarAppearanceUpdate()
             
         }, completion: nil)
+    }
+    
+    
+    func SignOut() {
+        let firebaseAuth = Auth.auth()
+        do {
+            
+            try firebaseAuth.signOut()
+            GIDSignIn.sharedInstance.signOut()
+            AccessToken.current = nil
+            self.loginManager.logOut()
+            self.view.window?.rootViewController = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LoginNavVC")
+        }
+        catch let signOutError as NSError {
+            print("Error signing out: %@", signOutError)
+        }
     }
 }
 

@@ -8,6 +8,8 @@
 import UIKit
 import FirebaseAuth
 import GoogleSignIn
+import FacebookLogin
+import Firebase
 
 class LoginVC: UIViewController {
     
@@ -26,12 +28,9 @@ class LoginVC: UIViewController {
         scrollView.contentSize = CGSize(width: UIScreen.main.bounds.width, height: 1000)
         
     }
-
+    
     
     @IBAction func loginButtonClick(_ sender: UIButton) {
-        
-        //let email = emailTextField.text!
-        //let password = passwordTextField.text!
         
         guard let email = emailTextField.text else { return }
         guard let password = passwordTextField.text else { return }
@@ -47,14 +46,59 @@ class LoginVC: UIViewController {
                 
                 let homeVC = ContainerControllerVC()
                 self.navigationController?.pushViewController(homeVC, animated: true)
-           }
+            }
         }
     }
     
+    
+    // Login Button For Facebook
+    
     @IBAction func FBLoginButtonClick(_ sender: UIButton) {
-        let FbLoginVC = FBLoginVC()
-        self.navigationController?.pushViewController(FbLoginVC, animated: true)
+        let fbLoginVC = FBLoginVC()
+        self.navigationController?.pushViewController(fbLoginVC, animated: true)
+        
     }
+    
+    
+    // Login button for Google
+    
+    @IBAction func googleLoginButtonClick(_ sender: UIButton) {
+        
+        guard let clientID = FirebaseApp.app()?.options.clientID else { return }
+        
+        // Create Google Sign In configuration object.
+        let config = GIDConfiguration(clientID: clientID)
+        
+        GIDSignIn.sharedInstance.signIn(with: config, presenting: self) { [unowned self] user, error in
+            
+            if error != nil {
+                //..
+                return
+            }
+            
+            guard
+                let authentication = user?.authentication,
+                let idToken = authentication.idToken
+            else {
+                return
+            }
+            
+            let credentialUser = GoogleAuthProvider.credential(withIDToken: idToken,
+                                                               accessToken: authentication.accessToken)
+            
+            Auth.auth().signIn(with: credentialUser) { result, error in
+                
+                if error != nil {
+                    return
+                } else {
+                    let homeDashboard = ContainerControllerVC()
+                    self.navigationController?.pushViewController(homeDashboard, animated: true)
+                }
+            }
+            
+        }
+    }
+    
     
     @IBAction func signUpButtonClick(_ sender: UIButton) {
         let signupVC = self.storyboard?.instantiateViewController(withIdentifier: "SignUpVC") as! SignUpVC
@@ -65,6 +109,4 @@ class LoginVC: UIViewController {
         let homeController = ContainerControllerVC()
         self.navigationController?.pushViewController(homeController, animated: true)
     }
-    
 }
-

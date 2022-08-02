@@ -10,6 +10,7 @@
 		249E823CDBEBDBF136E36EB9 /* Pods_LoginAppUsingScrollView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5EA2D2BCB23616947AF26CB5 /* Pods_LoginAppUsingScrollView.framework */; };
 		841B945E288B038C00CA760A /* SignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841B945D288B038C00CA760A /* SignUpVC.swift */; };
 		841B9460288B0A6B00CA760A /* LoginVC+Exctension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841B945F288B0A6B00CA760A /* LoginVC+Exctension.swift */; };
+		8422D34428981B53000F900F /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8422D34328981B52000F900F /* Constant.swift */; };
 		842E30D2289283E00086A85B /* FacebookCore in Frameworks */ = {isa = PBXBuildFile; productRef = 842E30D1289283E00086A85B /* FacebookCore */; };
 		842E30D4289283E00086A85B /* FacebookLogin in Frameworks */ = {isa = PBXBuildFile; productRef = 842E30D3289283E00086A85B /* FacebookLogin */; };
 		842E30D62892853C0086A85B /* FBLoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842E30D52892853C0086A85B /* FBLoginVC.swift */; };
@@ -27,6 +28,8 @@
 		8447C4A3288EC1D100639F41 /* MenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8447C4A2288EC1D100639F41 /* MenuController.swift */; };
 		8465A9AA288CF6500017DA75 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8465A9A9288CF6500017DA75 /* GoogleService-Info.plist */; };
 		8465A9B0288D07FD0017DA75 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 8465A9AF288D07FC0017DA75 /* FirebaseAnalytics */; };
+		848336BB2896A2F5004EB6CE /* NoteDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848336BA2896A2F5004EB6CE /* NoteDetailVC.swift */; };
+		8485881828966216007D28D9 /* ListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8485881728966216007D28D9 /* ListCell.swift */; };
 		84BC836B2892A84100A372B2 /* MenuOptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BC836A2892A84100A372B2 /* MenuOptionCell.swift */; };
 		84BC836E2892B2D600A372B2 /* MenuOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BC836D2892B2D600A372B2 /* MenuOption.swift */; };
 		84D1EF82288AB5100094DAAD /* String+Exctension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D1EF81288AB5100094DAAD /* String+Exctension.swift */; };
@@ -65,6 +68,7 @@
 		699E66E5204C0D915076B737 /* Pods-LoginAppUsingScrollView.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LoginAppUsingScrollView.release.xcconfig"; path = "Target Support Files/Pods-LoginAppUsingScrollView/Pods-LoginAppUsingScrollView.release.xcconfig"; sourceTree = "<group>"; };
 		841B945D288B038C00CA760A /* SignUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpVC.swift; sourceTree = "<group>"; };
 		841B945F288B0A6B00CA760A /* LoginVC+Exctension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LoginVC+Exctension.swift"; sourceTree = "<group>"; };
+		8422D34328981B52000F900F /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		842E30D52892853C0086A85B /* FBLoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FBLoginVC.swift; sourceTree = "<group>"; };
 		84333D32288A883A008F03D3 /* LoginAppUsingScrollView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LoginAppUsingScrollView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84333D35288A883A008F03D3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -83,6 +87,8 @@
 		8447C4A0288EC1B500639F41 /* HomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
 		8447C4A2288EC1D100639F41 /* MenuController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuController.swift; sourceTree = "<group>"; };
 		8465A9A9288CF6500017DA75 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		848336BA2896A2F5004EB6CE /* NoteDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteDetailVC.swift; sourceTree = "<group>"; };
+		8485881728966216007D28D9 /* ListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCell.swift; sourceTree = "<group>"; };
 		84BC836A2892A84100A372B2 /* MenuOptionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuOptionCell.swift; sourceTree = "<group>"; };
 		84BC836D2892B2D600A372B2 /* MenuOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuOption.swift; sourceTree = "<group>"; };
 		84D1EF81288AB5100094DAAD /* String+Exctension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Exctension.swift"; sourceTree = "<group>"; };
@@ -154,6 +160,7 @@
 				84333D39288A883A008F03D3 /* LoginVC.swift */,
 				841B945D288B038C00CA760A /* SignUpVC.swift */,
 				842E30D52892853C0086A85B /* FBLoginVC.swift */,
+				848336BA2896A2F5004EB6CE /* NoteDetailVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -162,8 +169,9 @@
 			isa = PBXGroup;
 			children = (
 				84333D3B288A883B008F03D3 /* Main.storyboard */,
-				84333D40288A883E008F03D3 /* LaunchScreen.storyboard */,
+				8485881728966216007D28D9 /* ListCell.swift */,
 				84BC836A2892A84100A372B2 /* MenuOptionCell.swift */,
+				84333D40288A883E008F03D3 /* LaunchScreen.storyboard */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -193,14 +201,13 @@
 		84333D34288A883A008F03D3 /* LoginAppUsingScrollView */ = {
 			isa = PBXGroup;
 			children = (
-				84333D35288A883A008F03D3 /* AppDelegate.swift */,
-				84333D37288A883A008F03D3 /* SceneDelegate.swift */,
+				849AAB9128993289005D0F81 /* SupportingFiles */,
 				84411549288F03900057C92A /* Utils */,
-				84D1EF80288AB4850094DAAD /* Exctension */,
 				84BC836C2892B28E00A372B2 /* Model */,
 				8447C49D288EC01C00639F41 /* SideMenuController */,
 				841B945A288AFDDE00CA760A /* Controller */,
 				842E30D7289298D80086A85B /* view */,
+				84D1EF80288AB4850094DAAD /* Exctension */,
 				84333D3E288A883E008F03D3 /* Assets.xcassets */,
 				8465A9A9288CF6500017DA75 /* GoogleService-Info.plist */,
 				84333D43288A883E008F03D3 /* Info.plist */,
@@ -229,6 +236,7 @@
 			isa = PBXGroup;
 			children = (
 				84D83859288F05A00030B267 /* Protocols.swift */,
+				8422D34328981B52000F900F /* Constant.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -241,6 +249,15 @@
 				8447C4A2288EC1D100639F41 /* MenuController.swift */,
 			);
 			path = SideMenuController;
+			sourceTree = "<group>";
+		};
+		849AAB9128993289005D0F81 /* SupportingFiles */ = {
+			isa = PBXGroup;
+			children = (
+				84333D35288A883A008F03D3 /* AppDelegate.swift */,
+				84333D37288A883A008F03D3 /* SceneDelegate.swift */,
+			);
+			path = SupportingFiles;
 			sourceTree = "<group>";
 		};
 		84BC836C2892B28E00A372B2 /* Model */ = {
@@ -514,8 +531,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				84D1EF84288AC1360094DAAD /* UIAlertController+Exctension.swift in Sources */,
+				8422D34428981B53000F900F /* Constant.swift in Sources */,
 				84D1EF82288AB5100094DAAD /* String+Exctension.swift in Sources */,
 				84333D3A288A883A008F03D3 /* LoginVC.swift in Sources */,
+				8485881828966216007D28D9 /* ListCell.swift in Sources */,
 				84333D36288A883A008F03D3 /* AppDelegate.swift in Sources */,
 				841B945E288B038C00CA760A /* SignUpVC.swift in Sources */,
 				84333D38288A883A008F03D3 /* SceneDelegate.swift in Sources */,
@@ -527,6 +546,7 @@
 				8447C4A3288EC1D100639F41 /* MenuController.swift in Sources */,
 				84BC836E2892B2D600A372B2 /* MenuOption.swift in Sources */,
 				841B9460288B0A6B00CA760A /* LoginVC+Exctension.swift in Sources */,
+				848336BB2896A2F5004EB6CE /* NoteDetailVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

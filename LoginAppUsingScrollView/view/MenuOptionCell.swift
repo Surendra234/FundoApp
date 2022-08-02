@@ -8,7 +8,7 @@
 import UIKit
 
 class MenuOptionCell: UITableViewCell {
-
+    
     // Properties
     
     let iconImgView: UIImageView = {
@@ -53,5 +53,5 @@ class MenuOptionCell: UITableViewCell {
     }
     
     // Handlers
-
+    
 }
