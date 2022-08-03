@@ -10,7 +10,6 @@ import SwiftUI
 
 class NoteDetailVC: UIViewController {
     
-    
     // Properties
     
     let descriptionTextView = UITextView()
@@ -18,11 +17,16 @@ class NoteDetailVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-        
+       
         configureRightBarButton()
         setUpConstraint()
         configureTextView()
+        
+        titleTextField.becomeFirstResponder()
+        
     }
+    
+    // Init
     
     let titleLabel: UILabel = {
         let lable = UILabel()
@@ -70,7 +74,6 @@ class NoteDetailVC: UIViewController {
         view.addSubview(titleLabel)
         view.addSubview(descriptionLable)
         view.addSubview(titleTextField)
-        //view.addSubview(descriptionTextView)
         view.addSubview(deleteButton)
         
         titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
@@ -96,7 +99,7 @@ class NoteDetailVC: UIViewController {
     
     func configureTextView()  {
         
-        descriptionTextView.text = "Enter your notes here"
+        //descriptionTextView.text = "Enter your notes here"
         descriptionTextView.frame = CGRect(x: 30, y: 300, width: 200, height: 150)
         descriptionTextView.font = .systemFont(ofSize: 18)
         descriptionTextView.backgroundColor = .secondarySystemBackground
@@ -121,6 +124,7 @@ class NoteDetailVC: UIViewController {
     }
     
     @objc func saveNotes() {
+        
         navigationController?.popViewController(animated: true)
     }
 }

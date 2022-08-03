@@ -13,8 +13,13 @@ class HomeController: UIViewController {
     
     // Properties
     
+    public var titelDetail: String = NoteDetailVC().titleTextField.text!
+    public var descriptionTextViewDetail: String = NoteDetailVC().descriptionTextView.text!
+    
     var myColletionView: UICollectionView!
     var delegate: HomeControllerDeleget?
+    
+    var notesData: [(titleTexts: String, noteText: String)] = [("1", "cell one"), ("2", "cell two"), ("3", "cell three")]
     
     // Init
     
@@ -50,6 +55,10 @@ class HomeController: UIViewController {
     @objc func noteAdd() {
         let noteVC = NoteDetailVC()
         self.navigationController?.pushViewController(noteVC, animated: true)
+        
+//        noteVC.title = "New Notes"
+//        noteVC.navigationItem.largeTitleDisplayMode = .never
+        
     }
     
     
@@ -70,12 +79,16 @@ class HomeController: UIViewController {
 extension HomeController: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 6
+        return notesData.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let mycell = collectionView.dequeueReusableCell(withReuseIdentifier: "MyCell", for: indexPath) as! ListCell
         mycell.backgroundColor = .green
+        
+        mycell.titleLabel.text = notesData[indexPath.row].titleTexts
+        mycell.descriptionLable.text = notesData[indexPath.row].noteText
+    
         //mycell.layoutSubviews()
         //print("green color")
         return mycell
@@ -83,6 +96,10 @@ extension HomeController: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print("user tapped on item \(indexPath.row)")
+        
+        titelDetail = notesData[indexPath.row].titleTexts
+        descriptionTextViewDetail = notesData[indexPath.row].noteText
+        navigationController?.pushViewController(NoteDetailVC(), animated: true)
     }
 }
 

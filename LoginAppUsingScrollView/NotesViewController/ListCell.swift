@@ -8,11 +8,16 @@
 import UIKit
 
 class ListCell: UICollectionViewCell {
-    
 
+//    public var noteTitle: String = ""
+//    public var note: String = ""
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.setUpView()
+        
+//        titleLabel.text = noteTitle
+//        descriptionLable.text = note
     }
     
     
@@ -55,11 +60,11 @@ class ListCell: UICollectionViewCell {
         titleLabel.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 10).isActive = true
         titleLabel.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -10).isActive = true
 
-        descriptionLable.topAnchor.constraint(greaterThanOrEqualTo: titleLabel.topAnchor, constant: 10).isActive = true
+        descriptionLable.topAnchor.constraint(equalTo: titleLabel.topAnchor, constant: 20).isActive = true
         descriptionLable.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 10).isActive = true
         descriptionLable.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -10).isActive = true
-        descriptionLable.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: 5).isActive = true
-        descriptionLable.setContentCompressionResistancePriority(.defaultLow, for: .vertical)
+        //descriptionLable.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: 5).isActive = true
+        //descriptionLable.setContentCompressionResistancePriority(.defaultLow, for: .vertical)
 
     }
     
