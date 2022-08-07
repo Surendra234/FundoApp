@@ -6,6 +6,9 @@
 //
 
 import UIKit
+import FirebaseDatabase
+import FirebaseFirestore
+import FirebaseAuth
 import SwiftUI
 
 class NoteDetailVC: UIViewController {
@@ -14,16 +17,22 @@ class NoteDetailVC: UIViewController {
     
     let descriptionTextView = UITextView()
     
+    var completion: ((Notes) -> Void)?
+    
+    var selectedNote: Notes? = nil
+    
+    //var note: Notes?
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-       
+        
         configureRightBarButton()
         setUpConstraint()
         configureTextView()
-        
-        titleTextField.becomeFirstResponder()
-        
+        configureDeleteButton()
+        setDetails()
     }
     
     // Init
@@ -65,9 +74,16 @@ class NoteDetailVC: UIViewController {
         button.layer.cornerRadius = 20
         button.layer.borderWidth = 1
         button.layer.borderColor = UIColor.black.cgColor
+        button.addTarget((Any).self, action: #selector(deleteSelectedNote), for: .touchUpInside)
         return button
     }()
     
+    func configureDeleteButton() {
+        deleteButton.topAnchor.constraint(equalTo: descriptionTextView.bottomAnchor, constant: 50).isActive = true
+        deleteButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        deleteButton.widthAnchor.constraint(equalToConstant: 150).isActive = true
+        deleteButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
+    }
     
     func setUpConstraint() {
         
@@ -78,29 +94,23 @@ class NoteDetailVC: UIViewController {
         
         titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         titleLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 30).isActive = true
-        titleLabel.leftAnchor.constraint(greaterThanOrEqualTo: view.leftAnchor, constant: 50).isActive = true
-        titleLabel.rightAnchor.constraint(greaterThanOrEqualTo: view.rightAnchor, constant: -30).isActive = true
+        titleLabel.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20).isActive = true
+        titleLabel.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -20).isActive = true
         
         titleTextField.topAnchor.constraint(equalTo: titleLabel.topAnchor, constant: 30).isActive = true
-        titleTextField.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 30).isActive = true
-        titleTextField.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -30).isActive = true
+        titleTextField.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor).isActive = true
+        titleTextField.trailingAnchor.constraint(equalTo: titleLabel.trailingAnchor).isActive = true
         titleTextField.heightAnchor.constraint(equalToConstant: 40).isActive = true
         
         descriptionLable.topAnchor.constraint(equalTo: titleTextField.topAnchor, constant: 60).isActive = true
         descriptionLable.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 30).isActive = true
         descriptionLable.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -30).isActive = true
         
-        deleteButton.bottomAnchor.constraint(equalTo: descriptionLable.topAnchor, constant: 320).isActive = true
-        deleteButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        deleteButton.widthAnchor.constraint(equalToConstant: 150).isActive = true
-        deleteButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
     }
     
     
     func configureTextView()  {
         
-        //descriptionTextView.text = "Enter your notes here"
-        descriptionTextView.frame = CGRect(x: 30, y: 300, width: 200, height: 150)
         descriptionTextView.font = .systemFont(ofSize: 18)
         descriptionTextView.backgroundColor = .secondarySystemBackground
         
@@ -108,10 +118,9 @@ class NoteDetailVC: UIViewController {
         descriptionTextView.translatesAutoresizingMaskIntoConstraints = false
         [
             descriptionTextView.topAnchor.constraint(equalTo: descriptionLable.topAnchor, constant: 30),
-            descriptionTextView.leadingAnchor.constraint(equalTo: descriptionLable.leadingAnchor),
-            descriptionTextView.trailingAnchor.constraint(equalTo: descriptionLable.trailingAnchor),
-            descriptionTextView.heightAnchor.constraint(equalToConstant: 200),
-            descriptionTextView.widthAnchor.constraint(equalToConstant: 450)
+            descriptionTextView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 30),
+            descriptionTextView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -30),
+            descriptionTextView.heightAnchor.constraint(equalToConstant: 250),
         ].forEach{
             $0.isActive = true
         }
@@ -120,11 +129,97 @@ class NoteDetailVC: UIViewController {
     
     func configureRightBarButton() {
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save", style: .plain, target: self, action: #selector(saveNotes))
-        
     }
+    
+    
+    // Save Notes
     
     @objc func saveNotes() {
         
-        navigationController?.popViewController(animated: true)
+        if let text = titleTextField.text, !text.isEmpty || !descriptionTextView.text.isEmpty {
+            
+            guard let noteTitle = titleTextField.text,
+                    let noteDesc = descriptionTextView.text else { return }
+            
+            if selectedNote != nil {
+                self.updateNote()
+            }
+            else {
+                NoteService.shared.createNote(title: noteTitle, describe: noteDesc) { error in
+                    
+                    // todo
+                    if error != nil {self.isNoteSaveAlert()}
+                    // main thred
+                    else {self.navigationController?.popViewController(animated: true)}
+                }
+            }
+        }
+        else{self.isEmptyTextFieldAlert()}
+    }
+    
+    
+    
+    // Delete Note
+    
+    @objc func deleteSelectedNote() {
+        
+        guard let noteId = selectedNote?.id else {
+            
+            print("Id not found")
+            self.isDeleteAlert()
+            return
+        }
+        NoteService.shared.deleteNote(id: noteId) { isSuccess in
+            if isSuccess {self.navigationController?.popViewController(animated: true)}
+        }
+    }
+    
+    
+    // Update Note
+    
+    func updateNote() {
+        
+        guard
+            let noteId = selectedNote?.id as? String,
+            let noteTitle = titleTextField.text,
+            let noteDesc = descriptionTextView.text else { return }
+        
+        NoteService.shared.updateNotes(id: noteId, title: noteTitle, desc: noteDesc) { isSuccess in
+            if isSuccess {self.navigationController?.popViewController(animated: true) }
+        }
+        print("one")
+    }
+    
+    
+    // Mark : Alert
+    
+    func isDeleteAlert() {
+        let deleteAlert = UIAlertController(title: "Can't Delete", message: "First save note after then you can delete it", preferredStyle: .alert)
+        deleteAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        self.present(deleteAlert, animated: true, completion: nil)
+    }
+    
+    func isEmptyTextFieldAlert() {
+        let isTextAvailable = UIAlertController(title: "Input Field Is Empty", message: "Please enter somethimg then save it", preferredStyle: .alert)
+        isTextAvailable.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        self.present(isTextAvailable, animated: true, completion: nil)
+        return
+    }
+    
+    func isNoteSaveAlert() {
+        let noteSaveAleart = UIAlertController(title: "Something Wrong", message: "Can't save right now try again", preferredStyle: .alert)
+        noteSaveAleart.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        self.present(noteSaveAleart, animated: true, completion: nil)
+    }
+    
+    
+    // Mark : set Detail of text
+    
+    func setDetails() {
+
+        if (selectedNote != nil) {
+            titleTextField.text = selectedNote?.title
+            descriptionTextView.text = selectedNote?.desc
+        }
     }
 }

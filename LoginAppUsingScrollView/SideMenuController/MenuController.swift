@@ -57,6 +57,7 @@ extension MenuController: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifire, for: indexPath) as! MenuOptionCell
         
         let menuOption = MenuOption(rawValue: indexPath.row)
+        cell.backgroundColor = .white
         cell.descriptionLable.text = menuOption?.description
         cell.iconImgView.image = menuOption?.image
         return cell

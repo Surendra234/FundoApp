@@ -16,14 +16,12 @@ extension LoginVC {
             
             if !email.isValidEmail() {
                 openAlert(title: "Alert", message: "Email address not found", alertStyle: .alert, actionTitles: ["Okay"], actionStyles: [.default], actions: [{ _ in
-                    print("Okay clicked!")
-                    
+                    print("Invalid Password")
                 }])
             }
             else if !password.isValidPassword() {
                 openAlert(title: "Alert", message: "Please enter valid password", alertStyle: .alert, actionTitles: ["Okay"], actionStyles: [.default], actions: [{ _ in
-                    print("Okay clicked!")
-                    
+                    print("Invalid Passwors")
                 }])
             } else {
                 // Navigation Home Screen
@@ -33,8 +31,7 @@ extension LoginVC {
         
         else {
             openAlert(title: "Alert", message: "Please add detail", alertStyle: .alert, actionTitles: ["Okay"], actionStyles: [.default], actions: [{ _ in
-                print("Okay clicked!")
-                
+                print("Enter Login Detail")
             }])
         }
     }

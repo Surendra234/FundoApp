@@ -6,20 +6,24 @@
 //
 
 import UIKit
-import SwiftUI
+import FirebaseDatabase
+import FirebaseFirestore
+import FirebaseAuth
 
 class HomeController: UIViewController {
     
     
     // Properties
     
-    public var titelDetail: String = NoteDetailVC().titleTextField.text!
-    public var descriptionTextViewDetail: String = NoteDetailVC().descriptionTextView.text!
-    
     var myColletionView: UICollectionView!
     var delegate: HomeControllerDeleget?
+    var searchBar: UISearchBar?
     
-    var notesData: [(titleTexts: String, noteText: String)] = [("1", "cell one"), ("2", "cell two"), ("3", "cell three")]
+    
+    // Marks: notesCollection
+    
+    var notes: [Notes] = []
+    
     
     // Init
     
@@ -29,22 +33,34 @@ class HomeController: UIViewController {
         view.backgroundColor = .blue
         navigationController?.navigationBar.barTintColor = UIColor.darkGray
         
-        let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
-        layout.sectionInset = UIEdgeInsets(top: 60, left: 20, bottom: 60, right: 20)
-        layout.scrollDirection = .vertical
-        layout.minimumInteritemSpacing = 0
-        layout.minimumLineSpacing = 10
-        layout.itemSize = CGSize(width: 150, height: 100)
-
-        myColletionView = UICollectionView(frame: self.view.frame, collectionViewLayout: layout)
-        myColletionView.register(ListCell.self, forCellWithReuseIdentifier: "MyCell")
-        myColletionView.backgroundColor = UIColor.white
-        myColletionView.dataSource = self
-        myColletionView.delegate = self
-        self.view.addSubview(myColletionView)
-        
+        configureCollectionView()
         configureNavigationBar()
+        configureButton()
     }
+    
+    
+    let addButton: UIButton = {
+        
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setTitle("Add", for: .normal)
+        button.backgroundColor = .red
+        button.layer.cornerRadius = 35
+        button.addTarget((Any).self, action: #selector(addNotes), for: .touchUpInside)
+        return button
+    }()
+    
+    
+    
+    func configureButton() {
+        
+        view.addSubview(addButton)
+        addButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -60).isActive = true
+        addButton.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -60).isActive = true
+        addButton.heightAnchor.constraint(equalToConstant: 70).isActive = true
+        addButton.widthAnchor.constraint(equalToConstant: 70).isActive = true
+    }
+    
     
     // Handlers
     
@@ -52,26 +68,85 @@ class HomeController: UIViewController {
         delegate?.handleMenu(forMenuOption: nil)
     }
     
-    @objc func noteAdd() {
+    
+    @objc func addNotes() {
+        
         let noteVC = NoteDetailVC()
+        noteVC.completion = {
+            self.notes.append($0)
+            self.myColletionView.reloadData()
+        }
         self.navigationController?.pushViewController(noteVC, animated: true)
+    }
+    
+    @objc func toggleButton() {
+        // swithing between list and grid
+    }
+//
+//    @objc func handleSearchBar() {
+//
+//        navigationItem.titleView = searchBar
+//        searchBar?.showsCancelButton = true
+//        navigationItem.rightBarButtonItem = nil
+//    }
+    
+    
+    func fetchNote() {
         
-//        noteVC.title = "New Notes"
-//        noteVC.navigationItem.largeTitleDisplayMode = .never
-        
+        NoteService.shared.fetchNotes { notes in
+            self.notes = notes
+            
+            DispatchQueue.main.async {
+                self.myColletionView.reloadData()
+            }
+        }
+    }
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+        fetchNote()
     }
     
     
     // HomeDasboard Navigation Bar
-
+    
     func configureNavigationBar() {
+        
         navigationController?.navigationBar.backgroundColor = .secondarySystemBackground
-        navigationController?.navigationBar.barTintColor = UIColor.darkGray
         
         navigationItem.title = "Keep Notes"
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "line3")?.withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(handleMenu))
         
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "notes")?.withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(noteAdd))
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "rectangle.grid.1x2")?.withRenderingMode(.alwaysOriginal), style: .plain, target: (Any).self, action: #selector(toggleButton))
+
+//        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(handleSearchBar))
+        
+        
+    }
+    
+    
+    // Mark : Collection View
+    
+    func configureCollectionView() {
+        
+        let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
+        layout.sectionInset = UIEdgeInsets(top: 40, left: 5, bottom: 0, right: 5)
+        layout.scrollDirection = .vertical
+        layout.minimumInteritemSpacing = 5
+        layout.minimumLineSpacing = 20
+        let wibth = (view.frame.size.width/2) - 15
+        
+        layout.itemSize = CGSize(width: wibth, height: wibth)
+        
+        myColletionView = UICollectionView(frame: self.view.frame, collectionViewLayout: layout)
+        myColletionView.register(ListCell.self, forCellWithReuseIdentifier: "MyCell")
+        myColletionView.backgroundColor = UIColor.white
+        
+        myColletionView.dataSource = self
+        myColletionView.delegate = self
+        
+        self.view.addSubview(myColletionView)
     }
 }
 
@@ -79,43 +154,49 @@ class HomeController: UIViewController {
 extension HomeController: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return notesData.count
+        return notes.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let mycell = collectionView.dequeueReusableCell(withReuseIdentifier: "MyCell", for: indexPath) as! ListCell
-        mycell.backgroundColor = .green
+        mycell.backgroundColor = .secondarySystemBackground
         
-        mycell.titleLabel.text = notesData[indexPath.row].titleTexts
-        mycell.descriptionLable.text = notesData[indexPath.row].noteText
-    
-        //mycell.layoutSubviews()
-        //print("green color")
+        mycell.titleLabel.text = notes[indexPath.row].title
+        mycell.descriptionLable.text = notes[indexPath.row].desc
+        mycell.layer.cornerRadius = 30
+        mycell.layer.borderWidth = 2
+        mycell.layer.borderColor = .init(red: 50/255, green: 120/255, blue: 250/255, alpha: 1)
         return mycell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print("user tapped on item \(indexPath.row)")
         
-        titelDetail = notesData[indexPath.row].titleTexts
-        descriptionTextViewDetail = notesData[indexPath.row].noteText
-        navigationController?.pushViewController(NoteDetailVC(), animated: true)
+        let editVC = NoteDetailVC()
+        
+        let selectedNote: Notes!
+        selectedNote = notes[indexPath.row]
+        editVC.selectedNote = selectedNote
+        
+        self.navigationController?.pushViewController(editVC, animated: true)
     }
 }
 
 
-//extension HomeController: UICollectionViewDelegateFlowLayout {
-//
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-//        let collectionWidth = collectionView.bounds.width
-//        return CGSize(width: collectionWidth/2-4, height: collectionWidth/2-4)
-//    }
-//
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-//        return 4
-//    }
-//
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-//        return 4
-//    }
-//}
+/*
+ extension HomeController: UICollectionViewDelegateFlowLayout {
+ 
+ func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+ let collectionWidth = collectionView.bounds.width
+ return CGSize(width: collectionWidth/2-4, height: collectionWidth/2-4)
+ }
+ 
+ func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+ return 4
+ }
+ 
+ func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+ return 4
+ }
+ }
+ */

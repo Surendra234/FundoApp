@@ -10,29 +10,29 @@ import UIKit
 
 enum MenuOption: Int, CustomStringConvertible {
     
-    case Profile
-    case Notes
-    case Notification
-    case Setting
+    case Home
+    case Archive
+    case Reminder
+    case SignOut
     
     var description: String {
         switch self {
-        case .Profile: return "Profile"
-        case .Notes: return "notes"
-        case .Notification: return "Notification"
-        case .Setting: return "SignOut"
+        case .Home: return "Home"
+        case .Archive: return "Archive"
+        case .Reminder: return "Reminder"
+        case .SignOut: return "SignOut"
         }
     }
     
     var image: UIImage {
         switch self {
-        case .Profile:
-            return UIImage(named: "person") ?? UIImage()
-        case .Notes:
-            return UIImage(named: "notes") ?? UIImage()
-        case .Notification:
-            return UIImage(named: "notification") ?? UIImage()
-        case .Setting:
+        case .Home:
+            return UIImage(systemName: "homekit")!.withRenderingMode(.alwaysOriginal)
+        case .Archive:
+            return UIImage(systemName: "square.and.arrow.down.fill")!.withRenderingMode(.alwaysOriginal)
+        case .Reminder:
+            return UIImage(systemName: "bell.badge")!.withRenderingMode(.alwaysOriginal)
+        case .SignOut:
             return UIImage(named: "setting") ?? UIImage()
         }
     }

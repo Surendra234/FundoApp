@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import FBSDKLoginKit
 import FirebaseAuth
 import FacebookLogin
 import GoogleSignIn
@@ -95,18 +94,17 @@ class ContainerControllerVC: UIViewController {
     func didSelectMenuOption(menuOption: MenuOption) {
         switch menuOption {
             
-        case .Profile:
-            print("profile")
+        case .Home:
+            isHome()
             
-        case .Notes:
-            print("Inbox")
+        case .Archive:
+            isArchiveNote()
             
-        case .Notification:
-            print("notes")
+        case .Reminder:
+            print("Reminder")
             
-            
-        case .Setting:
-            print("Setting")
+        case .SignOut:
+            print("SignOut")
             SignOut()
         }
     }
@@ -133,6 +131,18 @@ class ContainerControllerVC: UIViewController {
         catch let signOutError as NSError {
             print("Error signing out: %@", signOutError)
         }
+    }
+    
+    // Home Button
+    func isHome() {
+        print("Home")
+        self.navigationController?.popToRootViewController(animated: true)
+    }
+    
+    // Archive Button
+    func isArchiveNote() {
+        print("Archive Notes")
+        self.navigationController?.pushViewController(Constant.Archive.archiveNote, animated: true)
     }
 }
 

@@ -10,6 +10,7 @@
 		249E823CDBEBDBF136E36EB9 /* Pods_LoginAppUsingScrollView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5EA2D2BCB23616947AF26CB5 /* Pods_LoginAppUsingScrollView.framework */; };
 		841B945E288B038C00CA760A /* SignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841B945D288B038C00CA760A /* SignUpVC.swift */; };
 		841B9460288B0A6B00CA760A /* LoginVC+Exctension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841B945F288B0A6B00CA760A /* LoginVC+Exctension.swift */; };
+		841F2EAA289E508A00EF11FA /* ArchiveNotesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841F2EA9289E508A00EF11FA /* ArchiveNotesVC.swift */; };
 		8422D34428981B53000F900F /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8422D34328981B52000F900F /* Constant.swift */; };
 		842E30D2289283E00086A85B /* FacebookCore in Frameworks */ = {isa = PBXBuildFile; productRef = 842E30D1289283E00086A85B /* FacebookCore */; };
 		842E30D4289283E00086A85B /* FacebookLogin in Frameworks */ = {isa = PBXBuildFile; productRef = 842E30D3289283E00086A85B /* FacebookLogin */; };
@@ -28,9 +29,11 @@
 		8447C4A3288EC1D100639F41 /* MenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8447C4A2288EC1D100639F41 /* MenuController.swift */; };
 		8465A9AA288CF6500017DA75 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8465A9A9288CF6500017DA75 /* GoogleService-Info.plist */; };
 		8465A9B0288D07FD0017DA75 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 8465A9AF288D07FC0017DA75 /* FirebaseAnalytics */; };
+		84828464289A5648005D3334 /* NoteService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84828463289A5648005D3334 /* NoteService.swift */; };
 		848336BB2896A2F5004EB6CE /* NoteDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848336BA2896A2F5004EB6CE /* NoteDetailVC.swift */; };
 		8485881828966216007D28D9 /* ListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8485881728966216007D28D9 /* ListCell.swift */; };
-		849AAB9328994925005D0F81 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849AAB9228994925005D0F81 /* ContentView.swift */; };
+		84B0584A289A983B0024491A /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 84B05849289A983B0024491A /* FirebaseDatabase */; };
+		84BA387F289ABDDF00032CF7 /* Notes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BA387E289ABDDF00032CF7 /* Notes.swift */; };
 		84BC836B2892A84100A372B2 /* MenuOptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BC836A2892A84100A372B2 /* MenuOptionCell.swift */; };
 		84BC836E2892B2D600A372B2 /* MenuOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BC836D2892B2D600A372B2 /* MenuOption.swift */; };
 		84D1EF82288AB5100094DAAD /* String+Exctension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D1EF81288AB5100094DAAD /* String+Exctension.swift */; };
@@ -69,6 +72,7 @@
 		699E66E5204C0D915076B737 /* Pods-LoginAppUsingScrollView.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LoginAppUsingScrollView.release.xcconfig"; path = "Target Support Files/Pods-LoginAppUsingScrollView/Pods-LoginAppUsingScrollView.release.xcconfig"; sourceTree = "<group>"; };
 		841B945D288B038C00CA760A /* SignUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpVC.swift; sourceTree = "<group>"; };
 		841B945F288B0A6B00CA760A /* LoginVC+Exctension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LoginVC+Exctension.swift"; sourceTree = "<group>"; };
+		841F2EA9289E508A00EF11FA /* ArchiveNotesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchiveNotesVC.swift; sourceTree = "<group>"; };
 		8422D34328981B52000F900F /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		842E30D52892853C0086A85B /* FBLoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FBLoginVC.swift; sourceTree = "<group>"; };
 		84333D32288A883A008F03D3 /* LoginAppUsingScrollView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LoginAppUsingScrollView.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -88,9 +92,10 @@
 		8447C4A0288EC1B500639F41 /* HomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
 		8447C4A2288EC1D100639F41 /* MenuController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuController.swift; sourceTree = "<group>"; };
 		8465A9A9288CF6500017DA75 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		84828463289A5648005D3334 /* NoteService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteService.swift; sourceTree = "<group>"; };
 		848336BA2896A2F5004EB6CE /* NoteDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteDetailVC.swift; sourceTree = "<group>"; };
 		8485881728966216007D28D9 /* ListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCell.swift; sourceTree = "<group>"; };
-		849AAB9228994925005D0F81 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		84BA387E289ABDDF00032CF7 /* Notes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notes.swift; sourceTree = "<group>"; };
 		84BC836A2892A84100A372B2 /* MenuOptionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuOptionCell.swift; sourceTree = "<group>"; };
 		84BC836D2892B2D600A372B2 /* MenuOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuOption.swift; sourceTree = "<group>"; };
 		84D1EF81288AB5100094DAAD /* String+Exctension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Exctension.swift"; sourceTree = "<group>"; };
@@ -110,6 +115,7 @@
 				842E30D4289283E00086A85B /* FacebookLogin in Frameworks */,
 				84D22F04288D12B700B29BD9 /* FirebaseFirestore in Frameworks */,
 				84D22F02288D12B700B29BD9 /* FirebaseAuth in Frameworks */,
+				84B0584A289A983B0024491A /* FirebaseDatabase in Frameworks */,
 				249E823CDBEBDBF136E36EB9 /* Pods_LoginAppUsingScrollView.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -171,7 +177,6 @@
 			children = (
 				84333D3B288A883B008F03D3 /* Main.storyboard */,
 				84333D40288A883E008F03D3 /* LaunchScreen.storyboard */,
-				84BC836A2892A84100A372B2 /* MenuOptionCell.swift */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -238,7 +243,7 @@
 			children = (
 				84D83859288F05A00030B267 /* Protocols.swift */,
 				8422D34328981B52000F900F /* Constant.swift */,
-				849AAB9228994925005D0F81 /* ContentView.swift */,
+				84828463289A5648005D3334 /* NoteService.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -248,6 +253,8 @@
 			children = (
 				8447C49E288EC07100639F41 /* ContainerControllerVC.swift */,
 				8447C4A2288EC1D100639F41 /* MenuController.swift */,
+				84BC836A2892A84100A372B2 /* MenuOptionCell.swift */,
+				841F2EA9289E508A00EF11FA /* ArchiveNotesVC.swift */,
 			);
 			path = SideMenuController;
 			sourceTree = "<group>";
@@ -275,6 +282,7 @@
 			isa = PBXGroup;
 			children = (
 				84BC836D2892B2D600A372B2 /* MenuOption.swift */,
+				84BA387E289ABDDF00032CF7 /* Notes.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -313,6 +321,7 @@
 				84D22F03288D12B700B29BD9 /* FirebaseFirestore */,
 				842E30D1289283E00086A85B /* FacebookCore */,
 				842E30D3289283E00086A85B /* FacebookLogin */,
+				84B05849289A983B0024491A /* FirebaseDatabase */,
 			);
 			productName = LoginAppUsingScrollView;
 			productReference = 84333D32288A883A008F03D3 /* LoginAppUsingScrollView.app */;
@@ -548,6 +557,7 @@
 				8485881828966216007D28D9 /* ListCell.swift in Sources */,
 				84333D36288A883A008F03D3 /* AppDelegate.swift in Sources */,
 				841B945E288B038C00CA760A /* SignUpVC.swift in Sources */,
+				841F2EAA289E508A00EF11FA /* ArchiveNotesVC.swift in Sources */,
 				84333D38288A883A008F03D3 /* SceneDelegate.swift in Sources */,
 				8447C4A1288EC1B500639F41 /* HomeController.swift in Sources */,
 				84BC836B2892A84100A372B2 /* MenuOptionCell.swift in Sources */,
@@ -555,7 +565,8 @@
 				8447C49F288EC07100639F41 /* ContainerControllerVC.swift in Sources */,
 				842E30D62892853C0086A85B /* FBLoginVC.swift in Sources */,
 				8447C4A3288EC1D100639F41 /* MenuController.swift in Sources */,
-				849AAB9328994925005D0F81 /* ContentView.swift in Sources */,
+				84BA387F289ABDDF00032CF7 /* Notes.swift in Sources */,
+				84828464289A5648005D3334 /* NoteService.swift in Sources */,
 				84BC836E2892B2D600A372B2 /* MenuOption.swift in Sources */,
 				841B9460288B0A6B00CA760A /* LoginVC+Exctension.swift in Sources */,
 				848336BB2896A2F5004EB6CE /* NoteDetailVC.swift in Sources */,
@@ -949,6 +960,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 8465A9AE288D07FC0017DA75 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseAnalytics;
+		};
+		84B05849289A983B0024491A /* FirebaseDatabase */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8465A9AE288D07FC0017DA75 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseDatabase;
 		};
 		84D22F01288D12B700B29BD9 /* FirebaseAuth */ = {
 			isa = XCSwiftPackageProductDependency;

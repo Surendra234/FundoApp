@@ -11,7 +11,7 @@ import FirebaseCore
 import FirebaseFirestore
 
 class SignUpVC: UIViewController {
-
+    
     @IBOutlet var signUpScrollView: UIScrollView!
     
     @IBOutlet var imageProfile: UIImageView!
@@ -46,7 +46,7 @@ class SignUpVC: UIViewController {
     @IBAction func signUpButtonClick(_ sender: UIButton) {
         let systemImg = UIImage(systemName: "person")
         
-          if imageProfile.image?.pngData() != systemImg?.pngData() {
+        if imageProfile.image?.pngData() != systemImg?.pngData() {
             
             if let email = textEmail.text, let username = textUsername.text, let password = textPassword.text, let confirmPassword = textConfirmPassword.text {
                 
@@ -74,7 +74,9 @@ class SignUpVC: UIViewController {
                                 } else {
                                     
                                     let db = Firestore.firestore()
-                                    db.collection("users").addDocument(data: ["username": username, "uid": result!.user.uid]) { (error) in
+                                    let doc = db.collection("users").document((result?.user.uid)!)
+                                    
+                                    doc.setData(["user": username, "email" : email, "uid": result?.user.uid ?? (Any).self]) { (error) in
                                         
                                         if error != nil {
                                             print("got a error2")
@@ -106,7 +108,7 @@ class SignUpVC: UIViewController {
         let homeVC = ContainerControllerVC()
         self.navigationController?.pushViewController(homeVC, animated: true)
         
-      }
+    }
 }
 
 extension SignUpVC: UINavigationControllerDelegate, UIImagePickerControllerDelegate {

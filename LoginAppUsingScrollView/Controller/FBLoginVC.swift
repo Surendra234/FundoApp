@@ -8,6 +8,7 @@
 import UIKit
 import FacebookLogin
 import FirebaseAuth
+import FirebaseFirestore
 
 class FBLoginVC: UIViewController {
     
@@ -48,7 +49,7 @@ extension FBLoginVC: LoginButtonDelegate {
 
             let credential = FacebookAuthProvider
                 .credential(withAccessToken: curentUser.tokenString)
-
+            
             Auth.auth().signIn(with: credential) { result, error in
                 
                 if error != nil {

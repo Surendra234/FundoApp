@@ -24,11 +24,13 @@ class LoginVC: UIViewController {
     
     
     override func viewDidLayoutSubviews() {
+        
         scrollView.isScrollEnabled = true
         scrollView.contentSize = CGSize(width: UIScreen.main.bounds.width, height: 1000)
-        
     }
     
+    
+    // Marks : Login Button
     
     @IBAction func loginButtonClick(_ sender: UIButton) {
         
@@ -51,7 +53,7 @@ class LoginVC: UIViewController {
     }
     
     
-    // Login Button For Facebook
+    // Marks : Login Button For Facebook
     
     @IBAction func FBLoginButtonClick(_ sender: UIButton) {
         let fbLoginVC = FBLoginVC()
@@ -60,7 +62,7 @@ class LoginVC: UIViewController {
     }
     
     
-    // Login button for Google
+    // Marks : Login button for Google
     
     @IBAction func googleLoginButtonClick(_ sender: UIButton) {
         
@@ -85,7 +87,6 @@ class LoginVC: UIViewController {
             
             let credentialUser = GoogleAuthProvider.credential(withIDToken: idToken,
                                                                accessToken: authentication.accessToken)
-            
             Auth.auth().signIn(with: credentialUser) { result, error in
                 
                 if error != nil {
@@ -100,13 +101,33 @@ class LoginVC: UIViewController {
     }
     
     
+    // Marks : SignUp Button
+    
     @IBAction func signUpButtonClick(_ sender: UIButton) {
         let signupVC = self.storyboard?.instantiateViewController(withIdentifier: "SignUpVC") as! SignUpVC
         self.navigationController?.pushViewController(signupVC, animated: true)
     }
     
-    @IBAction func PowerButton(_ sender: UIButton) {
-        let homeController = ContainerControllerVC()
-        self.navigationController?.pushViewController(homeController, animated: true)
+    
+    // Marks : Forget Password
+    
+    @IBAction func forgetPasswordButtonClick(_ sender: Any) {
+        
+        Auth.auth().sendPasswordReset(withEmail: emailTextField.text!, completion: { (error) in
+            
+            DispatchQueue.main.async {
+                
+                if let error = error {
+                    let resetFailedAlert = UIAlertController(title: "Reset Failed", message: error.localizedDescription, preferredStyle: .alert)
+                    resetFailedAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                    self.present(resetFailedAlert, animated: true, completion: nil)
+                } else {
+                    let resetEmailSentAlert = UIAlertController(title: "Reset email sent successfully", message: "Check your email", preferredStyle: .alert)
+                    resetEmailSentAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                    self.present(resetEmailSentAlert, animated: true, completion: nil)
+                }
+            }
+        })
     }
 }
+

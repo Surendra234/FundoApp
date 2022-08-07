@@ -16,4 +16,8 @@ struct Constant {
     class LoginView {
         static let loginPage = LoginVC()
     }
+    
+    class Archive {
+        static let archiveNote = ArchiveNotesVC()
+    }
 }
