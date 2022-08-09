@@ -24,14 +24,18 @@
 		84333D4D288A883E008F03D3 /* LoginAppUsingScrollViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84333D4C288A883E008F03D3 /* LoginAppUsingScrollViewTests.swift */; };
 		84333D57288A883E008F03D3 /* LoginAppUsingScrollViewUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84333D56288A883E008F03D3 /* LoginAppUsingScrollViewUITests.swift */; };
 		84333D59288A883E008F03D3 /* LoginAppUsingScrollViewUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84333D58288A883E008F03D3 /* LoginAppUsingScrollViewUITestsLaunchTests.swift */; };
+		8442BC1928A2032500109A5B /* ImageUploder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8442BC1828A2032500109A5B /* ImageUploder.swift */; };
 		8447C49F288EC07100639F41 /* ContainerControllerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8447C49E288EC07100639F41 /* ContainerControllerVC.swift */; };
 		8447C4A1288EC1B500639F41 /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8447C4A0288EC1B500639F41 /* HomeController.swift */; };
 		8447C4A3288EC1D100639F41 /* MenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8447C4A2288EC1D100639F41 /* MenuController.swift */; };
+		844D819C28A25941006AE2A4 /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844D819B28A25941006AE2A4 /* ProfileVC.swift */; };
 		8465A9AA288CF6500017DA75 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8465A9A9288CF6500017DA75 /* GoogleService-Info.plist */; };
 		8465A9B0288D07FD0017DA75 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 8465A9AF288D07FC0017DA75 /* FirebaseAnalytics */; };
+		846AE71828A175B400FECB1B /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 846AE71728A175B400FECB1B /* FirebaseStorage */; };
 		84828464289A5648005D3334 /* NoteService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84828463289A5648005D3334 /* NoteService.swift */; };
 		848336BB2896A2F5004EB6CE /* NoteDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848336BA2896A2F5004EB6CE /* NoteDetailVC.swift */; };
 		8485881828966216007D28D9 /* ListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8485881728966216007D28D9 /* ListCell.swift */; };
+		84A88AE928A2D0550065E0EE /* SettingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A88AE828A2D0550065E0EE /* SettingCell.swift */; };
 		84B0584A289A983B0024491A /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 84B05849289A983B0024491A /* FirebaseDatabase */; };
 		84BA387F289ABDDF00032CF7 /* Notes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BA387E289ABDDF00032CF7 /* Notes.swift */; };
 		84BC836B2892A84100A372B2 /* MenuOptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BC836A2892A84100A372B2 /* MenuOptionCell.swift */; };
@@ -88,13 +92,16 @@
 		84333D52288A883E008F03D3 /* LoginAppUsingScrollViewUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LoginAppUsingScrollViewUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		84333D56288A883E008F03D3 /* LoginAppUsingScrollViewUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginAppUsingScrollViewUITests.swift; sourceTree = "<group>"; };
 		84333D58288A883E008F03D3 /* LoginAppUsingScrollViewUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginAppUsingScrollViewUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		8442BC1828A2032500109A5B /* ImageUploder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUploder.swift; sourceTree = "<group>"; };
 		8447C49E288EC07100639F41 /* ContainerControllerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerControllerVC.swift; sourceTree = "<group>"; };
 		8447C4A0288EC1B500639F41 /* HomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
 		8447C4A2288EC1D100639F41 /* MenuController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuController.swift; sourceTree = "<group>"; };
+		844D819B28A25941006AE2A4 /* ProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
 		8465A9A9288CF6500017DA75 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		84828463289A5648005D3334 /* NoteService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteService.swift; sourceTree = "<group>"; };
 		848336BA2896A2F5004EB6CE /* NoteDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteDetailVC.swift; sourceTree = "<group>"; };
 		8485881728966216007D28D9 /* ListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCell.swift; sourceTree = "<group>"; };
+		84A88AE828A2D0550065E0EE /* SettingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingCell.swift; sourceTree = "<group>"; };
 		84BA387E289ABDDF00032CF7 /* Notes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notes.swift; sourceTree = "<group>"; };
 		84BC836A2892A84100A372B2 /* MenuOptionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuOptionCell.swift; sourceTree = "<group>"; };
 		84BC836D2892B2D600A372B2 /* MenuOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuOption.swift; sourceTree = "<group>"; };
@@ -115,6 +122,7 @@
 				842E30D4289283E00086A85B /* FacebookLogin in Frameworks */,
 				84D22F04288D12B700B29BD9 /* FirebaseFirestore in Frameworks */,
 				84D22F02288D12B700B29BD9 /* FirebaseAuth in Frameworks */,
+				846AE71828A175B400FECB1B /* FirebaseStorage in Frameworks */,
 				84B0584A289A983B0024491A /* FirebaseDatabase in Frameworks */,
 				249E823CDBEBDBF136E36EB9 /* Pods_LoginAppUsingScrollView.framework in Frameworks */,
 			);
@@ -206,8 +214,10 @@
 		84333D34288A883A008F03D3 /* LoginAppUsingScrollView */ = {
 			isa = PBXGroup;
 			children = (
-				849AAB9128993289005D0F81 /* SupportingFiles */,
+				84A88AE728A2D0060065E0EE /* ProfileSetting */,
 				84411549288F03900057C92A /* Utils */,
+				849AAB9128993289005D0F81 /* SupportingFiles */,
+				8442BC1A28A20CC200109A5B /* NetworkCall */,
 				84BC836C2892B28E00A372B2 /* Model */,
 				8447C49D288EC01C00639F41 /* SideMenuController */,
 				8485A9FF2899849800258386 /* NotesViewController */,
@@ -243,9 +253,17 @@
 			children = (
 				84D83859288F05A00030B267 /* Protocols.swift */,
 				8422D34328981B52000F900F /* Constant.swift */,
-				84828463289A5648005D3334 /* NoteService.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		8442BC1A28A20CC200109A5B /* NetworkCall */ = {
+			isa = PBXGroup;
+			children = (
+				84828463289A5648005D3334 /* NoteService.swift */,
+				8442BC1828A2032500109A5B /* ImageUploder.swift */,
+			);
+			path = NetworkCall;
 			sourceTree = "<group>";
 		};
 		8447C49D288EC01C00639F41 /* SideMenuController */ = {
@@ -276,6 +294,15 @@
 				84333D37288A883A008F03D3 /* SceneDelegate.swift */,
 			);
 			path = SupportingFiles;
+			sourceTree = "<group>";
+		};
+		84A88AE728A2D0060065E0EE /* ProfileSetting */ = {
+			isa = PBXGroup;
+			children = (
+				84A88AE828A2D0550065E0EE /* SettingCell.swift */,
+				844D819B28A25941006AE2A4 /* ProfileVC.swift */,
+			);
+			path = ProfileSetting;
 			sourceTree = "<group>";
 		};
 		84BC836C2892B28E00A372B2 /* Model */ = {
@@ -322,6 +349,7 @@
 				842E30D1289283E00086A85B /* FacebookCore */,
 				842E30D3289283E00086A85B /* FacebookLogin */,
 				84B05849289A983B0024491A /* FirebaseDatabase */,
+				846AE71728A175B400FECB1B /* FirebaseStorage */,
 			);
 			productName = LoginAppUsingScrollView;
 			productReference = 84333D32288A883A008F03D3 /* LoginAppUsingScrollView.app */;
@@ -556,12 +584,15 @@
 				84333D3A288A883A008F03D3 /* LoginVC.swift in Sources */,
 				8485881828966216007D28D9 /* ListCell.swift in Sources */,
 				84333D36288A883A008F03D3 /* AppDelegate.swift in Sources */,
+				844D819C28A25941006AE2A4 /* ProfileVC.swift in Sources */,
 				841B945E288B038C00CA760A /* SignUpVC.swift in Sources */,
 				841F2EAA289E508A00EF11FA /* ArchiveNotesVC.swift in Sources */,
 				84333D38288A883A008F03D3 /* SceneDelegate.swift in Sources */,
 				8447C4A1288EC1B500639F41 /* HomeController.swift in Sources */,
 				84BC836B2892A84100A372B2 /* MenuOptionCell.swift in Sources */,
 				84D8385A288F05A00030B267 /* Protocols.swift in Sources */,
+				84A88AE928A2D0550065E0EE /* SettingCell.swift in Sources */,
+				8442BC1928A2032500109A5B /* ImageUploder.swift in Sources */,
 				8447C49F288EC07100639F41 /* ContainerControllerVC.swift in Sources */,
 				842E30D62892853C0086A85B /* FBLoginVC.swift in Sources */,
 				8447C4A3288EC1D100639F41 /* MenuController.swift in Sources */,
@@ -960,6 +991,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 8465A9AE288D07FC0017DA75 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseAnalytics;
+		};
+		846AE71728A175B400FECB1B /* FirebaseStorage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8465A9AE288D07FC0017DA75 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseStorage;
 		};
 		84B05849289A983B0024491A /* FirebaseDatabase */ = {
 			isa = XCSwiftPackageProductDependency;

@@ -7,12 +7,15 @@
 
 import UIKit
 import FirebaseAuth
-import FirebaseCore
 import FirebaseFirestore
+import Firebase
+import FirebaseStorage
 
 class SignUpVC: UIViewController {
     
     @IBOutlet var signUpScrollView: UIScrollView!
+    
+    var delegate: UserProfileImageDelegate?
     
     @IBOutlet var imageProfile: UIImageView!
     @IBOutlet var textUsername: UITextField!
@@ -50,56 +53,33 @@ class SignUpVC: UIViewController {
             
             if let email = textEmail.text, let username = textUsername.text, let password = textPassword.text, let confirmPassword = textConfirmPassword.text {
                 
-                if username == "" {
-                    print("Please enter username")
-                }
+                if username == "" { print("Please enter username")}
+                
                 else if !email.isValidEmail() {
                     openAlert(title: "Alert", message: "Please enter valid email", alertStyle: .alert, actionTitles: ["Okay"], actionStyles: [.default], actions: [{_ in }])
                     print("email is not valid")
                 }
-                else if !password.isValidPassword() {
-                    print("Password is not valid")
-                }else {
-                    if confirmPassword == "" {
-                        print("Please confirm password")
-                    }
+                
+                else if !password.isValidPassword() { print("Password is not valid")}
+                
+                else {
+                    if confirmPassword == "" { print("Please confirm password")}
+                    
                     else {
                         if password == confirmPassword {
+                            
+                            // Mark: SignUp Succesfully
                             //print("Navigation code")
-                            
-                            Auth.auth().createUser(withEmail: email, password: password) { (result, err) in
-                                
-                                if err != nil {
-                                    print("Got an error1")
-                                } else {
-                                    
-                                    let db = Firestore.firestore()
-                                    let doc = db.collection("users").document((result?.user.uid)!)
-                                    
-                                    doc.setData(["user": username, "email" : email, "uid": result?.user.uid ?? (Any).self]) { (error) in
-                                        
-                                        if error != nil {
-                                            print("got a error2")
-                                        }
-                                    }
-                                    // trantion to HomeDashboard
-                                    self.transtionToHomeViewController()
-                                }
-                            }
-                            
-                        }else {
-                            print("Password does not match")
-                        }
+                            self.uplodeImage(username: username, email: email, password: password)}
+                        
+                        else { print("Password does not match")}
                     }
                 }
             }
-            else {
-                print("Please check detail")
-            }
+            else { print("Please check detail")}
         }
         else {
-            openAlert(title: "Alert", message: "Please select profile picture", alertStyle: .alert, actionTitles: ["Okay"], actionStyles: [.default], actions: [{_ in }])
-        }
+            openAlert(title: "Alert", message: "Please select profile picture", alertStyle: .alert, actionTitles: ["Okay"], actionStyles: [.default], actions: [{_ in }])}
     }
     
     // transtion method sign to homedash board
@@ -109,7 +89,85 @@ class SignUpVC: UIViewController {
         self.navigationController?.pushViewController(homeVC, animated: true)
         
     }
+    
+    
+    // Mark: Uplode profile image
+    
+    private func uplodeImage(username: String, email: String, password: String) {
+        
+        guard let profileImg = imageProfile.image else { return }
+        
+        ImageUploder.uploadImage(image: profileImg) { imageURL in
+            
+            Auth.auth().createUser(withEmail: email, password: password) { (result, err) in
+                
+                if err != nil { print("Got an error1")}
+                
+                else {
+                    
+                    let db = Firestore.firestore()
+                    let doc = db.collection("users").document((result?.user.uid)!)
+   
+                    doc.setData(["user": username, "email" : email, "uid": result?.user.uid ?? (Any).self, "url": imageURL]) { (error) in
+                        
+                        if error != nil { print("got a error2")}
+                    }
+                    // trantion to HomeDashboard
+                    self.transtionToHomeViewController()
+                    
+                    let url = URL(string: imageURL)
+ 
+                    let data = try? Data(contentsOf: url!)
+                    
+                    //let profileImgVC = ProfileVC()
+            
+                    DispatchQueue.main.async {
+                        self.delegate?.userProfile(image: UIImage(data: data!)!)
+                        print("delegate call")
+                    }
+                }
+            }
+        }
+    }
 }
+
+
+//    private func retrivewData(imageURl: String) -> String{
+//
+//        var imgData: String
+//
+//        let db = Firestore.firestore()
+//        db.collection("users").document().getDocument { snapshot, error in
+//
+//            if error == nil && snapshot != nil {
+//
+//                for doc in snapshot!.documentID {
+//
+//                    //imageURl = (doc["url"] as? String)!
+//
+//                    // get a ref to storage
+//                    let storageRef = Storage.storage().reference()
+//
+//                    // specify the path
+//                    let filePath = storageRef.child(imageURl)
+//
+//                    filePath.getData(maxSize: 64) { Data, error in
+//
+//                        if let image = UIImage(data: Data!) {
+//
+//                            DispatchQueue.main.async {
+//                              imgData   = image
+//                            }
+//                        }
+//                    }
+//                }
+//            }
+//        }
+//        return imgData
+//    }
+
+
+// Mark: ImagePicker
 
 extension SignUpVC: UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     

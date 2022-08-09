@@ -6,9 +6,6 @@
 //
 
 import UIKit
-import FirebaseDatabase
-import FirebaseFirestore
-import FirebaseAuth
 
 class HomeController: UIViewController {
     
@@ -17,13 +14,17 @@ class HomeController: UIViewController {
     
     var myColletionView: UICollectionView!
     var delegate: HomeControllerDeleget?
-    var searchBar: UISearchBar?
     
+    let searchController = UISearchController()
+    var isSearching = false
+    
+    var profileButton: UIBarButtonItem!
+    var toggleButton: UIBarButtonItem!
+    var isList = false
     
     // Marks: notesCollection
     
-    var notes: [Notes] = []
-    
+    private var notes: [Notes] = []
     
     // Init
     
@@ -51,7 +52,6 @@ class HomeController: UIViewController {
     }()
     
     
-    
     func configureButton() {
         
         view.addSubview(addButton)
@@ -68,7 +68,7 @@ class HomeController: UIViewController {
         delegate?.handleMenu(forMenuOption: nil)
     }
     
-    
+
     @objc func addNotes() {
         
         let noteVC = NoteDetailVC()
@@ -79,26 +79,38 @@ class HomeController: UIViewController {
         self.navigationController?.pushViewController(noteVC, animated: true)
     }
     
-    @objc func toggleButton() {
-        // swithing between list and grid
+    @objc func isToggleButton() {
+        
+        if isList {
+            
+            toggleButton = UIBarButtonItem(image: UIImage(systemName: "rectangle.grid.1x2"), style: .plain, target: self, action: #selector(isToggleButton))
+            isList = false
+        }
+        else {
+            
+            toggleButton = UIBarButtonItem(image: UIImage(systemName: "square.grid.2x2"), style: .plain, target: self, action: #selector(isToggleButton))
+            isList = true
+        }
+        navigationItem.rightBarButtonItems = [profileButton, toggleButton]
+        self.myColletionView.reloadData()
     }
-//
-//    @objc func handleSearchBar() {
-//
-//        navigationItem.titleView = searchBar
-//        searchBar?.showsCancelButton = true
-//        navigationItem.rightBarButtonItem = nil
-//    }
+    
+    
+    @objc func profileButtonClick() {
+        // todo
+        print("Tapped on profile button")
+        
+        let profileView = ProfileVC()
+        self.navigationController?.pushViewController(profileView, animated: true)
+    }
     
     
     func fetchNote() {
         
         NoteService.shared.fetchNotes { notes in
-            self.notes = notes
             
-            DispatchQueue.main.async {
-                self.myColletionView.reloadData()
-            }
+            self.notes = notes
+            DispatchQueue.main.async { self.myColletionView.reloadData() }
         }
     }
     
@@ -108,21 +120,28 @@ class HomeController: UIViewController {
     }
     
     
-    // HomeDasboard Navigation Bar
+    // Mark: HomeDasboard Navigation Bar
     
     func configureNavigationBar() {
         
         navigationController?.navigationBar.backgroundColor = .secondarySystemBackground
-        
         navigationItem.title = "Keep Notes"
+        navigationController?.hidesBarsOnSwipe = true
+        
+        // Navigavtion Bar items
+        
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "line3")?.withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(handleMenu))
         
+        profileButton = UIBarButtonItem(image: UIImage(systemName: "person.circle.fill")?.withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(profileButtonClick))
         
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "rectangle.grid.1x2")?.withRenderingMode(.alwaysOriginal), style: .plain, target: (Any).self, action: #selector(toggleButton))
-
-//        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(handleSearchBar))
+        toggleButton = UIBarButtonItem(image: UIImage(systemName: "rectangle.grid.1x2"), style: .plain, target: self, action: #selector(isToggleButton))
         
+        navigationItem.rightBarButtonItems = [profileButton, toggleButton]
         
+        navigationItem.searchController = searchController
+        searchController.searchBar.placeholder = "Search your notes"
+        searchController.searchBar.delegate = self
+        searchController.searchResultsUpdater = self
     }
     
     
@@ -131,13 +150,6 @@ class HomeController: UIViewController {
     func configureCollectionView() {
         
         let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
-        layout.sectionInset = UIEdgeInsets(top: 40, left: 5, bottom: 0, right: 5)
-        layout.scrollDirection = .vertical
-        layout.minimumInteritemSpacing = 5
-        layout.minimumLineSpacing = 20
-        let wibth = (view.frame.size.width/2) - 15
-        
-        layout.itemSize = CGSize(width: wibth, height: wibth)
         
         myColletionView = UICollectionView(frame: self.view.frame, collectionViewLayout: layout)
         myColletionView.register(ListCell.self, forCellWithReuseIdentifier: "MyCell")
@@ -154,18 +166,22 @@ class HomeController: UIViewController {
 extension HomeController: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        
         return notes.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
         let mycell = collectionView.dequeueReusableCell(withReuseIdentifier: "MyCell", for: indexPath) as! ListCell
         mycell.backgroundColor = .secondarySystemBackground
         
         mycell.titleLabel.text = notes[indexPath.row].title
         mycell.descriptionLable.text = notes[indexPath.row].desc
+        
         mycell.layer.cornerRadius = 30
         mycell.layer.borderWidth = 2
         mycell.layer.borderColor = .init(red: 50/255, green: 120/255, blue: 250/255, alpha: 1)
+        
         return mycell
     }
     
@@ -183,20 +199,48 @@ extension HomeController: UICollectionViewDelegate, UICollectionViewDataSource {
 }
 
 
-/*
- extension HomeController: UICollectionViewDelegateFlowLayout {
- 
- func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
- let collectionWidth = collectionView.bounds.width
- return CGSize(width: collectionWidth/2-4, height: collectionWidth/2-4)
- }
- 
- func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
- return 4
- }
- 
- func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
- return 4
- }
- }
- */
+extension HomeController: UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        
+        return UIEdgeInsets(top: 40, left: 5, bottom: 0, right: 5)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+       
+        //let collectionWidth = collectionView.bounds.width
+        let listWidth = view.frame.size.width - 15
+        let GridWibth = (view.frame.size.width/2) - 15
+        
+        if isList {
+            return CGSize(width: listWidth, height: listWidth/2)
+        } else {
+            return CGSize(width: GridWibth, height: GridWibth)
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 5
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        20
+    }
+}
+
+
+
+extension HomeController: UISearchBarDelegate, UISearchResultsUpdating {
+    
+    func updateSearchResults(for searchController: UISearchController) {
+
+        guard let searchText = searchController.searchBar.text else { return}
+
+        if searchText == "" { fetchNote()}
+        
+        else {
+            notes = notes.filter({($0.title?.lowercased().prefix(searchText.count))! == searchText.lowercased()})
+        }
+        myColletionView.reloadData()
+    }
+}

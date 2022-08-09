@@ -6,10 +6,6 @@
 //
 
 import UIKit
-import FirebaseDatabase
-import FirebaseFirestore
-import FirebaseAuth
-import SwiftUI
 
 class NoteDetailVC: UIViewController {
     
@@ -37,6 +33,7 @@ class NoteDetailVC: UIViewController {
     
     // Init
     
+
     let titleLabel: UILabel = {
         let lable = UILabel()
         lable.translatesAutoresizingMaskIntoConstraints = false
@@ -78,12 +75,11 @@ class NoteDetailVC: UIViewController {
         return button
     }()
     
-    func configureDeleteButton() {
-        deleteButton.topAnchor.constraint(equalTo: descriptionTextView.bottomAnchor, constant: 50).isActive = true
-        deleteButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        deleteButton.widthAnchor.constraint(equalToConstant: 150).isActive = true
-        deleteButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
+    
+    func configureRightBarButton() {
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save", style: .plain, target: self, action: #selector(saveNotes))
     }
+    
     
     func setUpConstraint() {
         
@@ -101,11 +97,11 @@ class NoteDetailVC: UIViewController {
         titleTextField.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor).isActive = true
         titleTextField.trailingAnchor.constraint(equalTo: titleLabel.trailingAnchor).isActive = true
         titleTextField.heightAnchor.constraint(equalToConstant: 40).isActive = true
-        
+
         descriptionLable.topAnchor.constraint(equalTo: titleTextField.topAnchor, constant: 60).isActive = true
         descriptionLable.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 30).isActive = true
         descriptionLable.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -30).isActive = true
-        
+
     }
     
     
@@ -125,10 +121,12 @@ class NoteDetailVC: UIViewController {
             $0.isActive = true
         }
     }
-    
-    
-    func configureRightBarButton() {
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save", style: .plain, target: self, action: #selector(saveNotes))
+
+    func configureDeleteButton() {
+        deleteButton.topAnchor.constraint(equalTo: descriptionTextView.bottomAnchor, constant: 50).isActive = true
+        deleteButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        deleteButton.widthAnchor.constraint(equalToConstant: 150).isActive = true
+        deleteButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
     }
     
     
@@ -141,20 +139,19 @@ class NoteDetailVC: UIViewController {
             guard let noteTitle = titleTextField.text,
                     let noteDesc = descriptionTextView.text else { return }
             
-            if selectedNote != nil {
-                self.updateNote()
-            }
+            if selectedNote != nil { self.updateNote() }
+            
             else {
                 NoteService.shared.createNote(title: noteTitle, describe: noteDesc) { error in
-                    
                     // todo
-                    if error != nil {self.isNoteSaveAlert()}
+                    if error != nil {
+                        self.showAlert(title: "Something Wrong", message: "Can't save right now try again")}
                     // main thred
                     else {self.navigationController?.popViewController(animated: true)}
                 }
             }
         }
-        else{self.isEmptyTextFieldAlert()}
+        else{self.showAlert(title: "Input Field Is Empty", message: "Please enter somethimg then save it")}
     }
     
     
@@ -166,7 +163,7 @@ class NoteDetailVC: UIViewController {
         guard let noteId = selectedNote?.id else {
             
             print("Id not found")
-            self.isDeleteAlert()
+            self.showAlert(title: "Can't Delete", message: "First save note after then you can delete it")
             return
         }
         NoteService.shared.deleteNote(id: noteId) { isSuccess in
@@ -193,25 +190,14 @@ class NoteDetailVC: UIViewController {
     
     // Mark : Alert
     
-    func isDeleteAlert() {
-        let deleteAlert = UIAlertController(title: "Can't Delete", message: "First save note after then you can delete it", preferredStyle: .alert)
-        deleteAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-        self.present(deleteAlert, animated: true, completion: nil)
+    func showAlert(title: String, message: String) {
+        
+        let keepNoteAlert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        
+        keepNoteAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        
+        self.present(keepNoteAlert, animated: true, completion: nil)
     }
-    
-    func isEmptyTextFieldAlert() {
-        let isTextAvailable = UIAlertController(title: "Input Field Is Empty", message: "Please enter somethimg then save it", preferredStyle: .alert)
-        isTextAvailable.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-        self.present(isTextAvailable, animated: true, completion: nil)
-        return
-    }
-    
-    func isNoteSaveAlert() {
-        let noteSaveAleart = UIAlertController(title: "Something Wrong", message: "Can't save right now try again", preferredStyle: .alert)
-        noteSaveAleart.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-        self.present(noteSaveAleart, animated: true, completion: nil)
-    }
-    
     
     // Mark : set Detail of text
     

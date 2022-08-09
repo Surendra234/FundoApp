@@ -60,18 +60,5 @@ class ListCell: UICollectionViewCell {
         descriptionLable.heightAnchor.constraint(equalToConstant: 120).isActive = true
         descriptionLable.setContentCompressionResistancePriority(.defaultLow, for: .vertical)
     }
-    
-    
-//    override func layoutSubviews() {
-//        super.layoutSubviews()
-//
-//        addSubview(titleLabel)
-//        addSubview(descriptionLable)
-//
-//        titleLabel.frame = CGRect(x: 5, y: contentView.frame.size.height-100, width: contentView.frame.size.width-10, height: 40)
-//
-//        descriptionLable.frame = CGRect(x: 5, y: contentView.frame.size.height-70, width: contentView.frame.size.width-10, height: 40)
-//    }
-    
 }
 

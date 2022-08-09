@@ -31,7 +31,7 @@ enum MenuOption: Int, CustomStringConvertible {
         case .Archive:
             return UIImage(systemName: "square.and.arrow.down.fill")!.withRenderingMode(.alwaysOriginal)
         case .Reminder:
-            return UIImage(systemName: "bell.badge")!.withRenderingMode(.alwaysOriginal)
+            return UIImage(systemName: "bell.fill")!.withRenderingMode(.alwaysTemplate)
         case .SignOut:
             return UIImage(named: "setting") ?? UIImage()
         }

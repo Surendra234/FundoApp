@@ -89,14 +89,11 @@ class LoginVC: UIViewController {
                                                                accessToken: authentication.accessToken)
             Auth.auth().signIn(with: credentialUser) { result, error in
                 
-                if error != nil {
-                    return
-                } else {
+                if error != nil { return }
+                else {
                     let homeDashboard = ContainerControllerVC()
-                    self.navigationController?.pushViewController(homeDashboard, animated: true)
-                }
+                    self.navigationController?.pushViewController(homeDashboard, animated: true)}
             }
-            
         }
     }
     
@@ -117,17 +114,21 @@ class LoginVC: UIViewController {
             
             DispatchQueue.main.async {
                 
-                if let error = error {
-                    let resetFailedAlert = UIAlertController(title: "Reset Failed", message: error.localizedDescription, preferredStyle: .alert)
-                    resetFailedAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-                    self.present(resetFailedAlert, animated: true, completion: nil)
-                } else {
-                    let resetEmailSentAlert = UIAlertController(title: "Reset email sent successfully", message: "Check your email", preferredStyle: .alert)
-                    resetEmailSentAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-                    self.present(resetEmailSentAlert, animated: true, completion: nil)
+                if error != nil {
+                    self.showForgetPasswordAlert(title: "Reset Failed", message: "Network busy")
+                }
+                else {
+                    self.showForgetPasswordAlert(title: "Email sent successfully", message: "click on the forget password link and change your password")
                 }
             }
         })
+    }
+    
+    // Mark : forget password alert
+    private func showForgetPasswordAlert(title: String, message: String) {
+        let resetEmailSentAlert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        resetEmailSentAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        self.present(resetEmailSentAlert, animated: true, completion: nil)
     }
 }
 
