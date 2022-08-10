@@ -6,24 +6,21 @@
 //
 
 import UIKit
-import Firebase
 import FirebaseStorage
-import FirebaseFirestore
 
 private let reuseIdentifier = "SettingsCell"
 
 class ProfileVC: UIViewController {
     
-    let signUpVc = SignUpVC()
-    
+    var myDetail: UserDetail?
+
     var tableView: UITableView!
-    //var userInfoHeader: UserInfoHeader!
     
     let profileImage: UIImageView = {
         let imgView = UIImageView()
-        imgView.backgroundColor = .white
         imgView.clipsToBounds = true
         imgView.contentMode = .scaleToFill
+        imgView.backgroundColor = .white
         imgView.sizeToFit()
         imgView.layer.cornerRadius = 70
         return imgView
@@ -31,8 +28,9 @@ class ProfileVC: UIViewController {
     
     let photoLable: UILabel = {
         let lable = UILabel()
+        lable.textAlignment = .center
         lable.textColor = .black
-        lable.font = UIFont.systemFont(ofSize: 16)
+        lable.font = UIFont.systemFont(ofSize: 20)
         lable.text = "Profile Picture"
         return lable
     }()
@@ -41,31 +39,46 @@ class ProfileVC: UIViewController {
         
         super.viewDidLoad()
         view.backgroundColor = .white
-        navigationController?.navigationItem.backButtonTitle = "Profile Setting"
         
-        setUpConstraint()
-        
+        setUpConstratin()
         configureTableView()
-        
-        signUpVc.delegate = self
-        setProfileImage()
+    
+        UserService.getUserInfo { user in
+   
+            if user != nil {
+                self.setProfileImage(imgUrl: (user!.photoUrl)!)
+            }
+        }
     }
     
-    func setUpConstraint() {
+    
+    private func setProfileImage(imgUrl : String) {
+        
+        guard let url = URL(string: imgUrl) else { return}
+
+        guard let data = try? Data(contentsOf: url) else { return}
+ 
+        DispatchQueue.main.async {
+            self.profileImage.image = UIImage(data: data)
+        }
+    }
+    
+    func setUpConstratin() {
         
         view.addSubview(profileImage)
         view.addSubview(photoLable)
         
         profileImage.translatesAutoresizingMaskIntoConstraints = false
         profileImage.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        profileImage.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 70).isActive = true
+        profileImage.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 40).isActive = true
         profileImage.heightAnchor.constraint(equalToConstant: 150).isActive = true
         profileImage.widthAnchor.constraint(equalToConstant: 150).isActive = true
         
-        photoLable.topAnchor.constraint(equalTo: profileImage.topAnchor, constant: 10).isActive = true
-        photoLable.leadingAnchor.constraint(equalTo: profileImage.leadingAnchor).isActive = true
-        photoLable.trailingAnchor.constraint(equalTo: profileImage.trailingAnchor).isActive = true
-        photoLable.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        photoLable.translatesAutoresizingMaskIntoConstraints = false
+        photoLable.topAnchor.constraint(equalTo: profileImage.bottomAnchor, constant: 20).isActive = true
+        photoLable.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20).isActive = true
+        photoLable.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -20).isActive = true
+        photoLable.heightAnchor.constraint(equalToConstant: 30).isActive = true
     }
     
     func configureTableView() {
@@ -73,58 +86,80 @@ class ProfileVC: UIViewController {
         tableView = UITableView()
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.rowHeight = 60
+        tableView.rowHeight = 50
         
         tableView.register(SettingCell.self, forCellReuseIdentifier: reuseIdentifier)
         
         view.addSubview(tableView)
         
-//        let frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 100)
-//
-//        tableView.frame(forAlignmentRect: frame)
-        //tableView.tableFooterView = UIView()
-        
         tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.topAnchor.constraint(equalTo: profileImage.bottomAnchor, constant: 30).isActive = true
+        tableView.topAnchor.constraint(equalTo: photoLable.bottomAnchor, constant: 40).isActive = true
         tableView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
         tableView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
         tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
-    }
-    
-    
-    private func setProfileImage() {
-        
-        let url = URL(string: "https://firebasestorage.googleapis.com:443/v0/b/loginappusingscrollview.appspot.com/o/profile_image%2F3DF688E1-6A46-4823-A527-DA0BCB781ED6?alt=media&token=9df1d2e4-0750-4682-8a0e-de197c7ee97d")
-        
-        let data = try? Data(contentsOf: url!)
-        
-        DispatchQueue.main.async {
-            self.profileImage.image = UIImage(data: data!)
-        }
     }
 }
 
 
 extension ProfileVC: UITableViewDelegate, UITableViewDataSource {
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return SettingSection.allCases.count
     }
+    
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        
+        let view = UIView()
+        view.backgroundColor = UIColor(red: 55/255, green: 120/255, blue: 250/255, alpha: 1)
+        
+        let title = UILabel()
+        title.font = UIFont.boldSystemFont(ofSize: 16)
+        title.textColor = .white
+        title.text = SettingSection(rawValue: section)?.description
+        view.addSubview(title)
+        title.translatesAutoresizingMaskIntoConstraints = false
+        title.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        title.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 16).isActive = true
+        
+        return view
+    }
+    
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 30
+    }
+    
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        guard let section = SettingSection(rawValue: section) else { return 0}
+        
+        switch section {
+        case .UserInformation: return UserInformationOption.allCases.count
+        case .Communication: return CommunicationOption.allCases.count
+        }
+    }
+    
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as! SettingCell
-        cell.backgroundColor = .red
-        return cell
-    }
-}
-
-
-extension ProfileVC: UserProfileImageDelegate {
-    
-    func userProfile(image: UIImage) {
-        print("extention for delegate")
-        DispatchQueue.main.async {
-            self.profileImage.image = image
+        
+        guard let section = SettingSection(rawValue: indexPath.section) else { return UITableViewCell()}
+        
+        switch section {
+            
+        case .UserInformation:
+            
+            let userInfo = UserInformationOption(rawValue: indexPath.row)
+            cell.sectionType = userInfo
+            
+        case .Communication:
+            
+            let communication = CommunicationOption(rawValue: indexPath.row)
+            cell.sectionType = communication
         }
+        
+        return cell
     }
 }

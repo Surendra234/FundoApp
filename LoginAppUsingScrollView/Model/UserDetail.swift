@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct UserProfile {
+struct UserDetail {
     
     var username: String?
     var email: String?

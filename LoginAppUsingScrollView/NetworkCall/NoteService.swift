@@ -14,9 +14,6 @@ class NoteService {
     
     static let shared = NoteService()
     
-    //var notes: [Notes] = []
-    
-    
     // Mark : Featch Notes
     
     //@escaping and @resultset
@@ -99,13 +96,7 @@ class NoteService {
             
             let db = Firestore.firestore()
             
-            //1
-            print("two")
-            
             db.collection("users").document(user.uid).collection("Notes").document(id).updateData(["title": title, "desc": desc]) { err in
-                
-                //4
-                print("four")
                 
                 if err != nil {
                     print("error")
@@ -113,10 +104,7 @@ class NoteService {
                 }
                 completion(true)
             }
-            
-            //2
-            print("three")
         }
     }
 }
-    
+

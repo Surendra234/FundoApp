@@ -15,8 +15,6 @@ class SignUpVC: UIViewController {
     
     @IBOutlet var signUpScrollView: UIScrollView!
     
-    var delegate: UserProfileImageDelegate?
-    
     @IBOutlet var imageProfile: UIImageView!
     @IBOutlet var textUsername: UITextField!
     @IBOutlet var textEmail: UITextField!
@@ -108,63 +106,17 @@ class SignUpVC: UIViewController {
                     let db = Firestore.firestore()
                     let doc = db.collection("users").document((result?.user.uid)!)
    
-                    doc.setData(["user": username, "email" : email, "uid": result?.user.uid ?? (Any).self, "url": imageURL]) { (error) in
+                    doc.setData(["username": username, "email" : email, "uid": result?.user.uid ?? (Any).self, "url": imageURL]) { (error) in
                         
                         if error != nil { print("got a error2")}
                     }
                     // trantion to HomeDashboard
                     self.transtionToHomeViewController()
-                    
-                    let url = URL(string: imageURL)
- 
-                    let data = try? Data(contentsOf: url!)
-                    
-                    //let profileImgVC = ProfileVC()
-            
-                    DispatchQueue.main.async {
-                        self.delegate?.userProfile(image: UIImage(data: data!)!)
-                        print("delegate call")
-                    }
                 }
             }
         }
     }
 }
-
-
-//    private func retrivewData(imageURl: String) -> String{
-//
-//        var imgData: String
-//
-//        let db = Firestore.firestore()
-//        db.collection("users").document().getDocument { snapshot, error in
-//
-//            if error == nil && snapshot != nil {
-//
-//                for doc in snapshot!.documentID {
-//
-//                    //imageURl = (doc["url"] as? String)!
-//
-//                    // get a ref to storage
-//                    let storageRef = Storage.storage().reference()
-//
-//                    // specify the path
-//                    let filePath = storageRef.child(imageURl)
-//
-//                    filePath.getData(maxSize: 64) { Data, error in
-//
-//                        if let image = UIImage(data: Data!) {
-//
-//                            DispatchQueue.main.async {
-//                              imgData   = image
-//                            }
-//                        }
-//                    }
-//                }
-//            }
-//        }
-//        return imgData
-//    }
 
 
 // Mark: ImagePicker

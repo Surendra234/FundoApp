@@ -12,9 +12,3 @@ protocol HomeControllerDeleget {
     
     func handleMenu(forMenuOption menuOption: MenuOption?)
 }
-
-
-protocol UserProfileImageDelegate {
-    
-    func userProfile(image: UIImage)
-}
