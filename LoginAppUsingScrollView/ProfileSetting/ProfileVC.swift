@@ -12,7 +12,6 @@ private let reuseIdentifier = "SettingsCell"
 
 class ProfileVC: UIViewController {
     
-    var myDetail: UserDetail?
 
     var tableView: UITableView!
     
@@ -23,6 +22,7 @@ class ProfileVC: UIViewController {
         imgView.backgroundColor = .white
         imgView.sizeToFit()
         imgView.layer.cornerRadius = 70
+        imgView.image = UIImage(systemName: "person.fill")
         return imgView
     }()
     

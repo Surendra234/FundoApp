@@ -4,6 +4,8 @@
 //
 //  Created by Admin on 10/08/22.
 
+import Foundation
+
 protocol SectionType: CustomStringConvertible {
     var controlSwtich: Bool { get }
 }
@@ -30,12 +32,12 @@ enum UserInformationOption: Int, CaseIterable, SectionType {
     case Logout
     
     var controlSwtich: Bool { return false}
-    
+
     var description: String {
         
         switch self {
-        case .Username: return "surendra"
-        case .Email: return "surendra@gail.com"
+        case .Username: return UserService().getUsername()
+        case .Email: return UserService().getEmail()
         case .Logout: return "Log out"
         }
     }

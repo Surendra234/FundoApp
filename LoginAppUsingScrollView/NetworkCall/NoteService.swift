@@ -14,9 +14,41 @@ class NoteService {
     
     static let shared = NoteService()
     
+    var lastDocument: QueryDocumentSnapshot?
+    
     // Mark : Featch Notes
     
     //@escaping and @resultset
+    
+    
+    // Mark: Json
+    
+    func parseJson(snapshot: QuerySnapshot?, error: Error?, completion: @escaping ([Notes]) -> Void) {
+        
+        if error != nil {
+            
+            print("\(String(describing: error?.localizedDescription))")
+            return
+        }
+        
+        self.lastDocument = snapshot?.documents.last
+        var notes: [Notes] = []
+        for doc in snapshot!.documents {
+            
+            guard let id = doc["id"] as? String else { return }
+            guard let title = doc["title"] as? String else { return }
+            guard let desc = doc["desc"] as? String else { return }
+            
+            let note = Notes(id: id, title: title, desc: desc)
+            
+            notes.insert(note, at: 0)
+        }
+        
+        completion(notes)
+    }
+    
+    
+    // Mark: Fetching data
     
     func fetchNotes(completion: @escaping ([Notes]) -> Void) {
         
@@ -25,28 +57,30 @@ class NoteService {
         }
         
         let db = Firestore.firestore()
-        var notes: [Notes] = []
         
-        db.collection("users").document(user.uid).collection("Notes").order(by: "createdAt").getDocuments { snapShot, error in
+        db.collection("users").document(user.uid).collection("Notes").order(by: "createdAt", descending: true).limit(to: 10).getDocuments { snapShot, error in
             
-            if error != nil {
+            self.parseJson(snapshot: snapShot, error: error, completion: completion)
+        }
+    }
+    
+    
+    // Mark : Fetching data after scrolling
+    
+    func fetchMoreData(completion: @escaping ([Notes]) -> Void) {
+        
+        guard let user = Auth.auth().currentUser else {
+            return
+        }
+        
+        let db = Firestore.firestore()
+        
+        if lastDocument != nil {
+            
+            db.collection("users").document(user.uid).collection("Notes").order(by: "createdAt", descending: true).start(afterDocument: lastDocument!).limit(to: 10).getDocuments { snapshot, err in
                 
-                print("\(String(describing: error?.localizedDescription))")
-                return
+                self.parseJson(snapshot: snapshot, error: err, completion: completion)
             }
-            
-            for doc in snapShot!.documents {
-                
-                guard let id = doc["id"] as? String else { return }
-                guard let title = doc["title"] as? String else { return }
-                guard let desc = doc["desc"] as? String else { return }
-                
-                let note = Notes(id: id, title: title, desc: desc)
-                
-                notes.insert(note, at: 0)
-            }
-            
-            completion(notes)
         }
     }
     

@@ -13,18 +13,20 @@ class NoteDetailVC: UIViewController {
     
     let descriptionTextView = UITextView()
     
+    var saveButton: UIBarButtonItem!
+    var createLableBtn: UIBarButtonItem!
+    var archiveButton: UIBarButtonItem!
+    var reminderButton: UIBarButtonItem!
+    var pinButton: UIBarButtonItem!
+    
     var completion: ((Notes) -> Void)?
-    
     var selectedNote: Notes? = nil
-    
-    //var note: Notes?
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
         
-        configureRightBarButton()
+        configureRightBarButtons()
         setUpConstraint()
         configureTextView()
         configureDeleteButton()
@@ -76,8 +78,18 @@ class NoteDetailVC: UIViewController {
     }()
     
     
-    func configureRightBarButton() {
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save", style: .plain, target: self, action: #selector(saveNotes))
+    func configureRightBarButtons() {
+        
+        createLableBtn = UIBarButtonItem(image: UIImage(systemName: "tag"), style: .plain, target: self, action: #selector(createTag))
+        
+        archiveButton = UIBarButtonItem(image: UIImage(systemName: "square.and.arrow.down"), style: .plain, target: self, action: #selector(archiveAction))
+        
+        reminderButton = UIBarButtonItem(image: UIImage(systemName: "bell"), style: .plain, target: self, action: #selector(reminderAction))
+        
+        pinButton = UIBarButtonItem(image: UIImage(systemName: "pin"), style: .plain, target: self, action: #selector(pinAction))
+        
+        saveButton = UIBarButtonItem(title: "save", style: .plain, target: self, action: #selector(saveNotes))
+        navigationItem.rightBarButtonItems = [archiveButton, reminderButton, pinButton, saveButton]
     }
     
     
@@ -130,14 +142,54 @@ class NoteDetailVC: UIViewController {
     }
     
     
-    // Save Notes
+    // Mark : Handler
     
+    // Mark : Create Tag
+    @objc func createTag() {
+        
+        weak var tagTextField: UITextField?
+        
+        let alret = UIAlertController(title: "Create Lable", message: "", preferredStyle: .alert)
+        
+        let action = UIAlertAction(title: "Add Tag", style: .default) { (action) in
+            
+            print("Tag Action")
+            print(tagTextField?.text as Any)
+        }
+        
+        alret.addTextField { (alertTextField) in
+            alertTextField.placeholder = "Write here"
+            tagTextField = alertTextField
+        }
+        
+        alret.addAction(action)
+        
+        present(alret, animated: true, completion: nil)
+    }
+    
+    // Archive button
+    @objc func archiveAction() {
+        print("Archive")
+    }
+    
+    // Reminder button
+    @objc func reminderAction() {
+        print("Reminder")
+    }
+    
+    // Pin Button
+    @objc func pinAction() {
+        print("pinAction")
+    }
+    
+    
+    // Save Notes
     @objc func saveNotes() {
         
         if let text = titleTextField.text, !text.isEmpty || !descriptionTextView.text.isEmpty {
             
             guard let noteTitle = titleTextField.text,
-                    let noteDesc = descriptionTextView.text else { return }
+                  let noteDesc = descriptionTextView.text else { return }
             
             if selectedNote != nil { self.updateNote() }
             
@@ -153,7 +205,7 @@ class NoteDetailVC: UIViewController {
         }
         else{self.showAlert(title: "Input Field Is Empty", message: "Please enter somethimg then save it")}
     }
-    
+
     
     
     // Delete Note

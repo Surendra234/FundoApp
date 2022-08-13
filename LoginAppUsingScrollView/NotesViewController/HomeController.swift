@@ -9,7 +9,6 @@ import UIKit
 
 class HomeController: UIViewController {
     
-    
     // Properties
     
     var myColletionView: UICollectionView!
@@ -22,11 +21,13 @@ class HomeController: UIViewController {
     var toggleButton: UIBarButtonItem!
     var isList = false
     
+    
     // Marks: notesCollection
     
     private var notes: [Notes] = []
+    private var searchNotes = [Notes]()
     
-    // Init
+    fileprivate var activityIndicator: LoadMoreActivityIndicator!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,8 +56,8 @@ class HomeController: UIViewController {
     func configureButton() {
         
         view.addSubview(addButton)
-        addButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -60).isActive = true
-        addButton.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -60).isActive = true
+        addButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -40).isActive = true
+        addButton.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -40).isActive = true
         addButton.heightAnchor.constraint(equalToConstant: 70).isActive = true
         addButton.widthAnchor.constraint(equalToConstant: 70).isActive = true
     }
@@ -68,7 +69,7 @@ class HomeController: UIViewController {
         delegate?.handleMenu(forMenuOption: nil)
     }
     
-
+    
     @objc func addNotes() {
         
         let noteVC = NoteDetailVC()
@@ -114,6 +115,7 @@ class HomeController: UIViewController {
         }
     }
     
+    // Mark : View will appear
     
     override func viewWillAppear(_ animated: Bool) {
         fetchNote()
@@ -141,7 +143,6 @@ class HomeController: UIViewController {
         navigationItem.searchController = searchController
         searchController.searchBar.placeholder = "Search your notes"
         searchController.searchBar.delegate = self
-        searchController.searchResultsUpdater = self
     }
     
     
@@ -155,35 +156,40 @@ class HomeController: UIViewController {
         myColletionView.register(ListCell.self, forCellWithReuseIdentifier: "MyCell")
         myColletionView.backgroundColor = UIColor.white
         
+        self.view.addSubview(myColletionView)
+        
         myColletionView.dataSource = self
         myColletionView.delegate = self
         
-        self.view.addSubview(myColletionView)
+        activityIndicator = LoadMoreActivityIndicator(scrollView: myColletionView, spacingFromLastCell: 10, spacingFromLastCellWhenLoadMoreActionStart: 60)
     }
 }
 
 
-extension HomeController: UICollectionViewDelegate, UICollectionViewDataSource {
+extension HomeController: UICollectionViewDelegate, UICollectionViewDataSource, UIScrollViewDelegate {
+    
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        return notes.count
+        return isSearching ? searchNotes.count : notes.count
     }
+    
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let mycell = collectionView.dequeueReusableCell(withReuseIdentifier: "MyCell", for: indexPath) as! ListCell
         mycell.backgroundColor = .secondarySystemBackground
         
-        mycell.titleLabel.text = notes[indexPath.row].title
-        mycell.descriptionLable.text = notes[indexPath.row].desc
+        mycell.titleLabel.text = isSearching ? searchNotes[indexPath.row].title : notes[indexPath.row].title
+        mycell.descriptionLable.text = isSearching ? searchNotes[indexPath.row].desc : notes[indexPath.row].desc
         
         mycell.layer.cornerRadius = 30
-        mycell.layer.borderWidth = 2
+        //mycell.layer.borderWidth = 2
         mycell.layer.borderColor = .init(red: 50/255, green: 120/255, blue: 250/255, alpha: 1)
         
         return mycell
     }
+    
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print("user tapped on item \(indexPath.row)")
@@ -196,6 +202,44 @@ extension HomeController: UICollectionViewDelegate, UICollectionViewDataSource {
         
         self.navigationController?.pushViewController(editVC, animated: true)
     }
+    
+    
+//    private func createSpinerFooter() -> UIView {
+//
+//        let footerView = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 100))
+//        let spinner = UIActivityIndicatorView()
+//        spinner.center = footerView.center
+//        footerView.addSubview(spinner)
+//        spinner.startAnimating()
+//        return footerView
+//    }
+    
+    
+    // Mark : ScrollView
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        
+        activityIndicator.start {
+            DispatchQueue.global(qos: .utility).async {
+                for i in 0..<3 {
+                    print("!!!!!!!!! \(i)")
+                    sleep(1)
+                }
+                
+                NoteService.shared.fetchMoreData(completion: { newNotes in
+                    
+                    print("one")
+                    self.notes.append(contentsOf: newNotes.reversed())
+                    print("two")
+                    self.myColletionView.reloadData()
+                })
+                
+                DispatchQueue.main.async { [weak self] in
+                    self?.activityIndicator.stop()
+                }
+            }
+        }
+    }
 }
 
 
@@ -207,7 +251,7 @@ extension HomeController: UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-       
+        
         //let collectionWidth = collectionView.bounds.width
         let listWidth = view.frame.size.width - 15
         let GridWibth = (view.frame.size.width/2) - 15
@@ -230,17 +274,22 @@ extension HomeController: UICollectionViewDelegateFlowLayout {
 
 
 
-extension HomeController: UISearchBarDelegate, UISearchResultsUpdating {
+extension HomeController: UISearchBarDelegate {
     
-    func updateSearchResults(for searchController: UISearchController) {
-
-        guard let searchText = searchController.searchBar.text else { return}
-
-        if searchText == "" { fetchNote()}
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         
-        else {
-            notes = notes.filter({($0.title?.lowercased().prefix(searchText.count))! == searchText.lowercased()})
+        searchNotes = notes.filter {
+            ($0.title?.lowercased().prefix(searchText.count))! == searchText.lowercased() ||
+            ($0.desc?.lowercased().prefix(searchText.count))! == searchText.lowercased()
         }
+        
+        isSearching = true
+        myColletionView.reloadData()
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        isSearching = false
+        searchBar.text = ""
         myColletionView.reloadData()
     }
 }

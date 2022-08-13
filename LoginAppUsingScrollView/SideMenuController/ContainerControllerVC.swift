@@ -121,7 +121,6 @@ class ContainerControllerVC: UIViewController {
     func SignOut() {
         let firebaseAuth = Auth.auth()
         do {
-            
             try firebaseAuth.signOut()
             GIDSignIn.sharedInstance.signOut()
             AccessToken.current = nil
