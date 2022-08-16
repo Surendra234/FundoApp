@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		249E823CDBEBDBF136E36EB9 /* Pods_LoginAppUsingScrollView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5EA2D2BCB23616947AF26CB5 /* Pods_LoginAppUsingScrollView.framework */; };
+		840B854C28ABE50B0035F0A7 /* ReminderVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840B854B28ABE50A0035F0A7 /* ReminderVC.swift */; };
 		841B945E288B038C00CA760A /* SignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841B945D288B038C00CA760A /* SignUpVC.swift */; };
 		841B9460288B0A6B00CA760A /* LoginVC+Exctension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841B945F288B0A6B00CA760A /* LoginVC+Exctension.swift */; };
 		841F2EAA289E508A00EF11FA /* ArchiveNotesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841F2EA9289E508A00EF11FA /* ArchiveNotesVC.swift */; };
@@ -37,6 +38,7 @@
 		84828464289A5648005D3334 /* NoteService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84828463289A5648005D3334 /* NoteService.swift */; };
 		848336BB2896A2F5004EB6CE /* NoteDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848336BA2896A2F5004EB6CE /* NoteDetailVC.swift */; };
 		8485881828966216007D28D9 /* ListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8485881728966216007D28D9 /* ListCell.swift */; };
+		848F59B628AA5C6F00151CC4 /* SetReminderVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848F59B528AA5C6F00151CC4 /* SetReminderVC.swift */; };
 		84A88AE928A2D0550065E0EE /* SettingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A88AE828A2D0550065E0EE /* SettingCell.swift */; };
 		84B0584A289A983B0024491A /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 84B05849289A983B0024491A /* FirebaseDatabase */; };
 		84B9C7F328A3B62E00423A34 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B9C7F228A3B62E00423A34 /* UserService.swift */; };
@@ -49,6 +51,7 @@
 		84D22F02288D12B700B29BD9 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 84D22F01288D12B700B29BD9 /* FirebaseAuth */; };
 		84D22F04288D12B700B29BD9 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 84D22F03288D12B700B29BD9 /* FirebaseFirestore */; };
 		84D8385A288F05A00030B267 /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D83859288F05A00030B267 /* Protocols.swift */; };
+		84F2246228AAC3AD00AEC11B /* DeletedNotesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F2246128AAC3AD00AEC11B /* DeletedNotesVC.swift */; };
 		B5805644F0D886F89D356E38 /* Pods_LoginAppUsingScrollView_LoginAppUsingScrollViewUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06999AF34AF7BC2930839A31 /* Pods_LoginAppUsingScrollView_LoginAppUsingScrollViewUITests.framework */; };
 		F12E55CF6024580D222858C5 /* Pods_LoginAppUsingScrollViewTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 474B8AF36B3496C63E2C3663 /* Pods_LoginAppUsingScrollViewTests.framework */; };
 /* End PBXBuildFile section */
@@ -78,6 +81,7 @@
 		5C3B008B44726E47D7193D47 /* Pods-LoginAppUsingScrollView.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LoginAppUsingScrollView.debug.xcconfig"; path = "Target Support Files/Pods-LoginAppUsingScrollView/Pods-LoginAppUsingScrollView.debug.xcconfig"; sourceTree = "<group>"; };
 		5EA2D2BCB23616947AF26CB5 /* Pods_LoginAppUsingScrollView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LoginAppUsingScrollView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		699E66E5204C0D915076B737 /* Pods-LoginAppUsingScrollView.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LoginAppUsingScrollView.release.xcconfig"; path = "Target Support Files/Pods-LoginAppUsingScrollView/Pods-LoginAppUsingScrollView.release.xcconfig"; sourceTree = "<group>"; };
+		840B854B28ABE50A0035F0A7 /* ReminderVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderVC.swift; sourceTree = "<group>"; };
 		841B945D288B038C00CA760A /* SignUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpVC.swift; sourceTree = "<group>"; };
 		841B945F288B0A6B00CA760A /* LoginVC+Exctension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LoginVC+Exctension.swift"; sourceTree = "<group>"; };
 		841F2EA9289E508A00EF11FA /* ArchiveNotesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchiveNotesVC.swift; sourceTree = "<group>"; };
@@ -107,6 +111,7 @@
 		84828463289A5648005D3334 /* NoteService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteService.swift; sourceTree = "<group>"; };
 		848336BA2896A2F5004EB6CE /* NoteDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteDetailVC.swift; sourceTree = "<group>"; };
 		8485881728966216007D28D9 /* ListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCell.swift; sourceTree = "<group>"; };
+		848F59B528AA5C6F00151CC4 /* SetReminderVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetReminderVC.swift; sourceTree = "<group>"; };
 		84A88AE828A2D0550065E0EE /* SettingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingCell.swift; sourceTree = "<group>"; };
 		84B9C7F228A3B62E00423A34 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		84BA387E289ABDDF00032CF7 /* Notes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notes.swift; sourceTree = "<group>"; };
@@ -116,6 +121,7 @@
 		84D1EF81288AB5100094DAAD /* String+Exctension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Exctension.swift"; sourceTree = "<group>"; };
 		84D1EF83288AC1360094DAAD /* UIAlertController+Exctension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+Exctension.swift"; sourceTree = "<group>"; };
 		84D83859288F05A00030B267 /* Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
+		84F2246128AAC3AD00AEC11B /* DeletedNotesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeletedNotesVC.swift; sourceTree = "<group>"; };
 		A711C3BD7D8A6138D0D6F8AF /* Pods-LoginAppUsingScrollViewTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LoginAppUsingScrollViewTests.release.xcconfig"; path = "Target Support Files/Pods-LoginAppUsingScrollViewTests/Pods-LoginAppUsingScrollViewTests.release.xcconfig"; sourceTree = "<group>"; };
 		E7A3A61F121C205D3BD91B37 /* Pods-LoginAppUsingScrollView-LoginAppUsingScrollViewUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LoginAppUsingScrollView-LoginAppUsingScrollViewUITests.release.xcconfig"; path = "Target Support Files/Pods-LoginAppUsingScrollView-LoginAppUsingScrollViewUITests/Pods-LoginAppUsingScrollView-LoginAppUsingScrollViewUITests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -188,6 +194,14 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
+		841F60C728A806F00094C7B0 /* ArchiveNotes */ = {
+			isa = PBXGroup;
+			children = (
+				841F2EA9289E508A00EF11FA /* ArchiveNotesVC.swift */,
+			);
+			path = ArchiveNotes;
+			sourceTree = "<group>";
+		};
 		842E30D7289298D80086A85B /* view */ = {
 			isa = PBXGroup;
 			children = (
@@ -228,6 +242,7 @@
 				8442BC1A28A20CC200109A5B /* NetworkCall */,
 				84BC836C2892B28E00A372B2 /* Model */,
 				8447C49D288EC01C00639F41 /* SideMenuController */,
+				84F2246328AAE03700AEC11B /* SideMenuOptionFiles */,
 				8485A9FF2899849800258386 /* NotesViewController */,
 				84A88AE728A2D0060065E0EE /* ProfileSetting */,
 				841B945A288AFDDE00CA760A /* Controller */,
@@ -281,7 +296,6 @@
 				8447C49E288EC07100639F41 /* ContainerControllerVC.swift */,
 				8447C4A2288EC1D100639F41 /* MenuController.swift */,
 				84BC836A2892A84100A372B2 /* MenuOptionCell.swift */,
-				841F2EA9289E508A00EF11FA /* ArchiveNotesVC.swift */,
 			);
 			path = SideMenuController;
 			sourceTree = "<group>";
@@ -295,6 +309,15 @@
 				84C51E9728A56A3100F69354 /* LoadMoreActivityIndicator.swift */,
 			);
 			path = NotesViewController;
+			sourceTree = "<group>";
+		};
+		848F59B028AA4F3E00151CC4 /* Reminder */ = {
+			isa = PBXGroup;
+			children = (
+				840B854B28ABE50A0035F0A7 /* ReminderVC.swift */,
+				848F59B528AA5C6F00151CC4 /* SetReminderVC.swift */,
+			);
+			path = Reminder;
 			sourceTree = "<group>";
 		};
 		849AAB9128993289005D0F81 /* SupportingFiles */ = {
@@ -336,6 +359,24 @@
 			path = Exctension;
 			sourceTree = "<group>";
 		};
+		84F2246028AAC36F00AEC11B /* DeletedNotes */ = {
+			isa = PBXGroup;
+			children = (
+				84F2246128AAC3AD00AEC11B /* DeletedNotesVC.swift */,
+			);
+			path = DeletedNotes;
+			sourceTree = "<group>";
+		};
+		84F2246328AAE03700AEC11B /* SideMenuOptionFiles */ = {
+			isa = PBXGroup;
+			children = (
+				841F60C728A806F00094C7B0 /* ArchiveNotes */,
+				84F2246028AAC36F00AEC11B /* DeletedNotes */,
+				848F59B028AA4F3E00151CC4 /* Reminder */,
+			);
+			path = SideMenuOptionFiles;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -347,7 +388,7 @@
 				84333D2E288A883A008F03D3 /* Sources */,
 				84333D2F288A883A008F03D3 /* Frameworks */,
 				84333D30288A883A008F03D3 /* Resources */,
-				F29556DE218313D419B7A450 /* [CP] Embed Pods Frameworks */,
+				3BDE24DF95DC96C6E5CF0A77 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -394,7 +435,7 @@
 				84333D4E288A883E008F03D3 /* Sources */,
 				84333D4F288A883E008F03D3 /* Frameworks */,
 				84333D50288A883E008F03D3 /* Resources */,
-				F493DDB2B48EBCB5AF58BE67 /* [CP] Embed Pods Frameworks */,
+				3EE70630D81F16FC530520AD /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -483,6 +524,40 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		3BDE24DF95DC96C6E5CF0A77 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-LoginAppUsingScrollView/Pods-LoginAppUsingScrollView-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-LoginAppUsingScrollView/Pods-LoginAppUsingScrollView-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-LoginAppUsingScrollView/Pods-LoginAppUsingScrollView-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		3EE70630D81F16FC530520AD /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-LoginAppUsingScrollView-LoginAppUsingScrollViewUITests/Pods-LoginAppUsingScrollView-LoginAppUsingScrollViewUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-LoginAppUsingScrollView-LoginAppUsingScrollViewUITests/Pods-LoginAppUsingScrollView-LoginAppUsingScrollViewUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-LoginAppUsingScrollView-LoginAppUsingScrollViewUITests/Pods-LoginAppUsingScrollView-LoginAppUsingScrollViewUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		672124BD777399F8AE665786 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -549,40 +624,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		F29556DE218313D419B7A450 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-LoginAppUsingScrollView/Pods-LoginAppUsingScrollView-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-LoginAppUsingScrollView/Pods-LoginAppUsingScrollView-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-LoginAppUsingScrollView/Pods-LoginAppUsingScrollView-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		F493DDB2B48EBCB5AF58BE67 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-LoginAppUsingScrollView-LoginAppUsingScrollViewUITests/Pods-LoginAppUsingScrollView-LoginAppUsingScrollViewUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-LoginAppUsingScrollView-LoginAppUsingScrollViewUITests/Pods-LoginAppUsingScrollView-LoginAppUsingScrollViewUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-LoginAppUsingScrollView-LoginAppUsingScrollViewUITests/Pods-LoginAppUsingScrollView-LoginAppUsingScrollViewUITests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -603,10 +644,12 @@
 				841F2EAA289E508A00EF11FA /* ArchiveNotesVC.swift in Sources */,
 				84333D38288A883A008F03D3 /* SceneDelegate.swift in Sources */,
 				8447C4A1288EC1B500639F41 /* HomeController.swift in Sources */,
+				848F59B628AA5C6F00151CC4 /* SetReminderVC.swift in Sources */,
 				84BC836B2892A84100A372B2 /* MenuOptionCell.swift in Sources */,
 				84232F3B28A3851600E16F5B /* UserDetail.swift in Sources */,
 				84D8385A288F05A00030B267 /* Protocols.swift in Sources */,
 				84C51E9828A56A3100F69354 /* LoadMoreActivityIndicator.swift in Sources */,
+				840B854C28ABE50B0035F0A7 /* ReminderVC.swift in Sources */,
 				84A88AE928A2D0550065E0EE /* SettingCell.swift in Sources */,
 				8442BC1928A2032500109A5B /* ImageUploder.swift in Sources */,
 				8447C49F288EC07100639F41 /* ContainerControllerVC.swift in Sources */,
@@ -615,6 +658,7 @@
 				84BA387F289ABDDF00032CF7 /* Notes.swift in Sources */,
 				84828464289A5648005D3334 /* NoteService.swift in Sources */,
 				84BC836E2892B2D600A372B2 /* MenuOption.swift in Sources */,
+				84F2246228AAC3AD00AEC11B /* DeletedNotesVC.swift in Sources */,
 				841B9460288B0A6B00CA760A /* LoginVC+Exctension.swift in Sources */,
 				848336BB2896A2F5004EB6CE /* NoteDetailVC.swift in Sources */,
 			);

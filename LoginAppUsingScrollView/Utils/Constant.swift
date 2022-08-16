@@ -20,4 +20,16 @@ struct Constant {
     class Archive {
         static let archiveNote = ArchiveNotesVC()
     }
+    
+    class Delete {
+        static let deleteNote = DeletedNotesVC()
+    }
+}
+
+
+// Mark : Reminder
+
+struct Reminder {
+    
+    let date: Date
 }

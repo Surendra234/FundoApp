@@ -33,7 +33,7 @@ class HomeController: UIViewController {
         super.viewDidLoad()
         
         view.backgroundColor = .blue
-        navigationController?.navigationBar.barTintColor = UIColor.darkGray
+        self.navigationController?.navigationBar.barTintColor = UIColor.darkGray
         
         configureCollectionView()
         configureNavigationBar()
@@ -109,8 +109,8 @@ class HomeController: UIViewController {
     func fetchNote() {
         
         NoteService.shared.fetchNotes { notes in
-            
-            self.notes = notes
+
+            self.notes = notes.reversed()
             DispatchQueue.main.async { self.myColletionView.reloadData() }
         }
     }
@@ -126,9 +126,9 @@ class HomeController: UIViewController {
     
     func configureNavigationBar() {
         
-        navigationController?.navigationBar.backgroundColor = .secondarySystemBackground
-        navigationItem.title = "Keep Notes"
-        navigationController?.hidesBarsOnSwipe = true
+        self.navigationController?.navigationBar.backgroundColor = .secondarySystemBackground
+        self.navigationItem.title = "Keep Notes"
+        self.navigationController?.hidesBarsOnSwipe = true
         
         // Navigavtion Bar items
         
@@ -204,17 +204,6 @@ extension HomeController: UICollectionViewDelegate, UICollectionViewDataSource, 
     }
     
     
-//    private func createSpinerFooter() -> UIView {
-//
-//        let footerView = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 100))
-//        let spinner = UIActivityIndicatorView()
-//        spinner.center = footerView.center
-//        footerView.addSubview(spinner)
-//        spinner.startAnimating()
-//        return footerView
-//    }
-    
-    
     // Mark : ScrollView
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
@@ -228,9 +217,7 @@ extension HomeController: UICollectionViewDelegate, UICollectionViewDataSource, 
                 
                 NoteService.shared.fetchMoreData(completion: { newNotes in
                     
-                    print("one")
-                    self.notes.append(contentsOf: newNotes.reversed())
-                    print("two")
+                    self.notes.append(contentsOf: newNotes)
                     self.myColletionView.reloadData()
                 })
                 

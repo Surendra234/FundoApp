@@ -147,6 +147,8 @@ extension ProfileVC: UITableViewDelegate, UITableViewDataSource {
         
         guard let section = SettingSection(rawValue: indexPath.section) else { return UITableViewCell()}
         
+        tableView.deselectRow(at: indexPath, animated: true)
+        
         switch section {
             
         case .UserInformation:

@@ -12,7 +12,7 @@ class UserService {
     
     static func getUserInfo(completion: @escaping (UserDetail?) -> Void) {
         
-        let myInformation = UserDefaults.standard
+        //let myInformation = UserDefaults.standard
         
         guard let uid = Auth.auth().currentUser?.uid else {
             completion(nil)
@@ -40,8 +40,8 @@ class UserService {
             
             let userInfo = UserDetail(username: username, email: email, photoUrl: photoURl)
             
-            myInformation.set(username, forKey: "name")
-            myInformation.set(email, forKey: "email")
+//            myInformation.set(username, forKey: "name")
+//            myInformation.set(email, forKey: "email")
             
             completion(userInfo)
         }
@@ -49,13 +49,20 @@ class UserService {
     
     func getUsername() -> String {
         
-        guard let name = UserDefaults.standard.value(forKey: "name") as? String else { return "UserName"}
-        return name
+        var name: String?
+        UserService.getUserInfo { user in
+            name = user?.username
+        }
+        return name ?? "surendra"
     }
     
     func getEmail() -> String {
         
-        guard let email = UserDefaults.standard.value(forKey: "email") as? String else { return "Email_Id"}
-        return email
+        var email: String?
+        
+        UserService.getUserInfo { user in
+            email = user?.email
+        }
+        return email ?? "surendra@gmail.com"
     }
 }

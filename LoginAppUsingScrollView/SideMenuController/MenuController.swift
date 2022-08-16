@@ -19,9 +19,9 @@ class MenuController: UIViewController {
     // Init
     
     override func viewDidLoad() {
+       
         super.viewDidLoad()
         configureTableView()
-        
     }
 
     
@@ -54,6 +54,7 @@ extension MenuController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifire, for: indexPath) as! MenuOptionCell
         
         let menuOption = MenuOption(rawValue: indexPath.row)
@@ -64,7 +65,9 @@ extension MenuController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
         let menuOption = MenuOption(rawValue: indexPath.row)
+        tableView.deselectRow(at: indexPath, animated: true)
         delegate?.handleMenu(forMenuOption: menuOption)
     }
 }

@@ -420,8 +420,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="square.and.arrow.down" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="5Q6-71-qnM">
-                                <rect key="frame" x="82" y="94" width="250" height="200"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="trash.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="5Q6-71-qnM">
+                                <rect key="frame" x="82" y="93" width="250" height="200.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="250" id="A9r-A1-YUc"/>
                                     <constraint firstAttribute="height" constant="200" id="Hye-kf-mJN"/>
@@ -521,8 +521,8 @@
     </scenes>
     <resources>
         <image name="person" catalog="system" width="128" height="117"/>
-        <image name="square.and.arrow.down" catalog="system" width="121" height="128"/>
         <image name="sun.and.horizon" catalog="system" width="128" height="80"/>
+        <image name="trash.fill" catalog="system" width="121" height="128"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

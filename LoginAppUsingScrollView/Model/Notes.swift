@@ -12,4 +12,6 @@ struct Notes {
     var id: String?
     var title: String?
     var desc: String?
+    var archive: Bool?
+    var delete: Bool?
 }

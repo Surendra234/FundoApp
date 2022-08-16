@@ -95,13 +95,14 @@ class ContainerControllerVC: UIViewController {
         switch menuOption {
             
         case .Home:
-            isHome()
+            self.navigationController?.popToRootViewController(animated: true)
             
         case .Archive:
-            isArchiveNote()
+            self.navigationController?.pushViewController(Constant.Archive.archiveNote, animated: true)
             
-        case .Reminder:
-            print("Reminder")
+        case .Deleted:
+            self.navigationController?.pushViewController(Constant.Delete.deleteNote, animated: true)
+            print("Deleted Notes")
             
         case .SignOut:
             print("SignOut")
@@ -131,21 +132,10 @@ class ContainerControllerVC: UIViewController {
             print("Error signing out: %@", signOutError)
         }
     }
-    
-    // Home Button
-    func isHome() {
-        print("Home")
-        self.navigationController?.popToRootViewController(animated: true)
-    }
-    
-    // Archive Button
-    func isArchiveNote() {
-        print("Archive Notes")
-        self.navigationController?.pushViewController(Constant.Archive.archiveNote, animated: true)
-    }
 }
 
 extension ContainerControllerVC: HomeControllerDeleget {
+    
     func handleMenu(forMenuOption menuOption: MenuOption?) {
         if !isExpanded {
             configureMenuController()
