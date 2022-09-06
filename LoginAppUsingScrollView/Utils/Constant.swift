@@ -24,6 +24,10 @@ struct Constant {
     class Delete {
         static let deleteNote = DeletedNotesVC()
     }
+    
+    class ReminderOption {
+        static let reminderNote = ReminderVC()
+    }
 }
 
 

@@ -24,10 +24,7 @@ class FBLoginVC: UIViewController {
         if let token = AccessToken.current,
            !token.isExpired {
             // User is logged in, do work such as go to next view controller.
-            print("One")
         } else {
-            print("Two")
-            //print(AccessToken.current)
             loginButton.permissions = ["public_profile", "email"]
             loginButton.delegate = self
         }
@@ -57,7 +54,6 @@ extension FBLoginVC: LoginButtonDelegate {
                     return
                 }
                 else {
-                    //print("Login")
                     let homeDashboardVC = ContainerControllerVC()
                     self.navigationController?.pushViewController(homeDashboardVC, animated: true)
                 }

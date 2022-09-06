@@ -16,11 +16,6 @@ class NoteService {
     
     var lastDocument: QueryDocumentSnapshot?
     
-    // Mark : Featch Notes
-    
-    //@escaping and @resultset
-    
-    
     // Mark: parseJson method to set data
     
     private func parseJson(snapshot: QuerySnapshot?, error: Error?, completion: @escaping ([Notes]) -> Void) {
@@ -33,6 +28,7 @@ class NoteService {
         
         self.lastDocument = snapshot?.documents.last
         var notes: [Notes] = []
+        
         for doc in snapshot!.documents {
             
             guard let id = doc["id"] as? String else { return }
@@ -58,7 +54,7 @@ class NoteService {
         
         let db = Firestore.firestore()
         
-        db.collection("users").document(user.uid).collection("Notes").order(by: "createdAt", descending: true).whereField("archive", isEqualTo: false).whereField("delete", isEqualTo: false).limit(to: 10).getDocuments { snapShot, error in
+        db.collection("users").document(user.uid).collection("Notes").order(by: "createdAt", descending: true).whereField("archive", isEqualTo: false).whereField("delete", isEqualTo: false).whereField("reminder", isEqualTo: false).limit(to: 10).getDocuments { snapShot, error in
             
             self.parseJson(snapshot: snapShot, error: error, completion: completion)
         }
@@ -77,7 +73,7 @@ class NoteService {
         
         if lastDocument != nil {
             
-            db.collection("users").document(user.uid).collection("Notes").order(by:"createdAt", descending: true).whereField("archive", isEqualTo: false).whereField("delete", isEqualTo: false).start(afterDocument: lastDocument!).limit(to: 10).getDocuments { snapshot, err in
+            db.collection("users").document(user.uid).collection("Notes").order(by:"createdAt", descending: true).whereField("archive", isEqualTo: false).whereField("delete", isEqualTo: false).whereField("reminder", isEqualTo: false).start(afterDocument: lastDocument!).limit(to: 10).getDocuments { snapshot, err in
                 
                 self.parseJson(snapshot: snapshot, error: err, completion: completion)
             }
@@ -87,14 +83,14 @@ class NoteService {
     
     // Mark : Create Notes
     
-    func createNote(title: String, describe: String, archive: Bool, delete: Bool, completion: @escaping (Error?) -> Void) {
+    func createNote(title: String, describe: String, archive: Bool, delete: Bool, reminder: Bool, completion: @escaping (Error?) -> Void) {
         
         if let user = Auth.auth().currentUser {
             
             let db = Firestore.firestore()
             let doc = db.collection("users").document(user.uid).collection("Notes").document()
             
-            doc.setData(["id": doc.documentID, "title": title, "desc": describe, "archive": archive, "delete": delete, "createdAt": Timestamp(date: Date())]) { err in
+            doc.setData(["id": doc.documentID, "title": title, "desc": describe, "archive": archive, "delete": delete, "reminder": reminder, "createdAt": Timestamp(date: Date())]) { err in
                 
                 completion(err)
             }
@@ -124,13 +120,13 @@ class NoteService {
     
     // Mark : Update Note
     
-    func updateNotes(id: String, title: String, desc: String, archive: Bool, delete: Bool, completion: @escaping (Bool) -> Void) {
+    func updateNotes(id: String, title: String, desc: String, archive: Bool, delete: Bool, reminder: Bool, completion: @escaping (Bool) -> Void) {
         
         if let user = Auth.auth().currentUser {
             
             let db = Firestore.firestore()
             
-            db.collection("users").document(user.uid).collection("Notes").document(id).updateData(["title": title, "desc": desc, "archive": archive, "delete": delete]) { err in
+            db.collection("users").document(user.uid).collection("Notes").document(id).updateData(["title": title, "desc": desc, "archive": archive, "delete": delete, "reminder": reminder]) { err in
                 
                 if err != nil {
                     print("error")
@@ -143,7 +139,7 @@ class NoteService {
     
     // Mark : Archive Note
     
-   func getArchiveNotes(complition: @escaping ([Notes]) -> Void) {
+   func getArchiveNotes(completion: @escaping ([Notes]) -> Void) {
         
         guard let user = Auth.auth().currentUser else {
             return
@@ -153,14 +149,14 @@ class NoteService {
         
         db.collection("users").document(user.uid).collection("Notes").order(by: "createdAt").whereField("archive", isEqualTo: true).limit(to: 10).getDocuments { snapshot, error in
         
-            self.parseJsonGetNotes(snapshot: snapshot, error: error, completion: complition)
+            self.parseJsonGetNotes(snapshot: snapshot, error: error, completion: completion)
         }
     }
     
     
     // Mark : Get Delete Notes
     
-    func getDeleteNotes(complition: @escaping ([Notes]) -> Void) {
+    func getDeleteNotes(completion: @escaping ([Notes]) -> Void) {
         
         guard let user = Auth.auth().currentUser else {
             return
@@ -170,7 +166,24 @@ class NoteService {
         
         db.collection("users").document(user.uid).collection("Notes").order(by: "createdAt").whereField("delete", isEqualTo: true).limit(to: 10).getDocuments { snapshot, error in
 
-            self.parseJsonGetNotes(snapshot: snapshot, error: error, completion: complition)
+            self.parseJsonGetNotes(snapshot: snapshot, error: error, completion: completion)
+        }
+    }
+    
+    
+    // Mark : Get Reminder Notes
+    
+    func getReminderNotes(completion: @escaping ([Notes]) -> Void) {
+        
+        guard let user = Auth.auth().currentUser else {
+            return
+        }
+        
+        let db = Firestore.firestore()
+        
+        db.collection("users").document(user.uid).collection("Notes").order(by: "createdAt").whereField("reminder", isEqualTo: true).limit(to: 10).getDocuments { snapshot, error in
+            
+            self.parseJsonGetNotes(snapshot: snapshot, error: error, completion: completion)
         }
     }
     
@@ -187,13 +200,14 @@ class NoteService {
         var noteArr: [Notes] = []
         for doc in snapshot!.documents {
             
-            guard let id = doc["id"] as? String else { return }
-            guard let title = doc["title"] as? String else { return }
-            guard let desc = doc["desc"] as? String else { return }
-            guard let archive = doc["archive"] as? Bool else { return }
+            guard let id = doc["id"] as? String else { return}
+            guard let title = doc["title"] as? String else { return}
+            guard let desc = doc["desc"] as? String else { return}
+            guard let archive = doc["archive"] as? Bool else { return}
             guard let delete = doc["delete"] as? Bool else { return}
+            guard let reminder = doc["reminder"] as? Bool else { return}
             
-            let notes = Notes(id: id, title: title, desc: desc, archive: archive, delete: delete)
+            let notes = Notes(id: id, title: title, desc: desc, archive: archive, delete: delete, reminder: reminder)
             noteArr.insert(notes, at: 0)
         }
         completion(noteArr)

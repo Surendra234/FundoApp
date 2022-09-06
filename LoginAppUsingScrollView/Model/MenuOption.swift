@@ -13,6 +13,7 @@ enum MenuOption: Int, CustomStringConvertible {
     case Home
     case Archive
     case Deleted
+    case ReminderOption
     case SignOut
     
     var description: String {
@@ -20,6 +21,7 @@ enum MenuOption: Int, CustomStringConvertible {
         case .Home: return "Home"
         case .Archive: return "Archive"
         case .Deleted: return "Deleted"
+        case .ReminderOption: return "Reminder"
         case .SignOut: return "SignOut"
         }
     }
@@ -32,6 +34,8 @@ enum MenuOption: Int, CustomStringConvertible {
             return UIImage(systemName: "square.and.arrow.down.fill")!.withRenderingMode(.alwaysOriginal)
         case .Deleted:
             return UIImage(systemName: "trash.fill")!.withRenderingMode(.alwaysTemplate)
+        case .ReminderOption:
+            return UIImage(systemName: "bell")!.withRenderingMode(.alwaysOriginal)
         case .SignOut:
             return UIImage(named: "setting") ?? UIImage()
         }

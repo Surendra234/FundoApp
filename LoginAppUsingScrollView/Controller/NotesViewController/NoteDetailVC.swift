@@ -14,10 +14,8 @@ class NoteDetailVC: UIViewController {
     
     let descriptionTextView = UITextView()
     
-    var createLableBtn: UIBarButtonItem!
     var archiveButton: UIBarButtonItem!
     var reminderButton: UIBarButtonItem!
-    var pinButton: UIBarButtonItem!
     
     var completion: ((Notes) -> Void)?
     
@@ -26,6 +24,7 @@ class NoteDetailVC: UIViewController {
         didSet {
             isArchive = selectedNote?.archive ?? false
             isDelete = selectedNote?.delete ?? false
+            isReminder = selectedNote?.reminder ?? false
         }
     }
     
@@ -103,16 +102,12 @@ class NoteDetailVC: UIViewController {
     
     func configureRightBarButtons() {
         
-        createLableBtn = UIBarButtonItem(image: UIImage(systemName: "tag"), style: .plain, target: self, action: #selector(createTag))
-        
         // archiveButton
         setArchiveIcon()
         
-        reminderButton = UIBarButtonItem(image: UIImage(systemName: "bell"), style: .plain, target: self, action: #selector(reminderAction))
+        setReminderIcon()
         
-        pinButton = UIBarButtonItem(image: UIImage(systemName: "pin"), style: .plain, target: self, action: #selector(pinAction))
-        
-        navigationItem.rightBarButtonItems = [archiveButton, reminderButton, pinButton]
+        navigationItem.rightBarButtonItems = [archiveButton, reminderButton]
     }
     
     
@@ -179,35 +174,12 @@ class NoteDetailVC: UIViewController {
     
     // Mark : Handler
     
-    // Mark : Create Tag
-    @objc func createTag() {
-        
-        weak var tagTextField: UITextField?
-        
-        let alret = UIAlertController(title: "Create Lable", message: "", preferredStyle: .alert)
-        
-        let action = UIAlertAction(title: "Add Tag", style: .default) { (action) in
-            
-            print("Tag Action")
-            print(tagTextField?.text as Any)
-        }
-        
-        alret.addTextField { (alertTextField) in
-            alertTextField.placeholder = "Write here"
-            tagTextField = alertTextField
-        }
-        
-        alret.addAction(action)
-        
-        present(alret, animated: true, completion: nil)
-    }
-    
     // Archive button
     @objc func archiveAction() -> Bool {
                 
         isArchive.toggle()
         setArchiveIcon()
-        navigationItem.rightBarButtonItems = [archiveButton, reminderButton, pinButton]
+        navigationItem.rightBarButtonItems = [archiveButton, reminderButton]
         return isArchive
     }
     
@@ -223,9 +195,11 @@ class NoteDetailVC: UIViewController {
             sheet.detents = [.medium()]
         }
         
-        remVC.completion = { (date, isReminder) in
+        remVC.completion = { [self] (date, isReminder) in
             
             self.isReminder = isReminder
+            self.setReminderIcon()
+            self.navigationItem.rightBarButtonItems = [archiveButton, reminderButton]
             
             DispatchQueue.main.async {
 
@@ -254,14 +228,6 @@ class NoteDetailVC: UIViewController {
         present(remVC, animated: true)
     }
     
-    
-    // Pin Button
-    @objc func pinAction() {
-        print("pinAction")
-        print(isReminder)
-    }
-    
-    
     // Save Notes
     @objc func saveNotes() {
         
@@ -270,10 +236,10 @@ class NoteDetailVC: UIViewController {
             guard let noteTitle = titleTextField.text,
                   let noteDesc = descriptionTextView.text else { return }
             
-            if selectedNote != nil || isArchive == true { self.updateNote() }
+            if selectedNote != nil || isArchive == true || isReminder == true { self.updateNote() }
             
             else {
-                NoteService.shared.createNote(title: noteTitle, describe: noteDesc, archive: isArchive, delete: isDelete) { error in
+                NoteService.shared.createNote(title: noteTitle, describe: noteDesc, archive: isArchive, delete: isDelete, reminder: isReminder) { error in
                     // todo
                     if error != nil {
                         self.showAlert(title: "Something Wrong", message: "Can't save right now try again")}
@@ -317,7 +283,7 @@ class NoteDetailVC: UIViewController {
             let noteTitle = titleTextField.text,
             let noteDesc = descriptionTextView.text else { return }
         
-        NoteService.shared.updateNotes(id: noteId, title: noteTitle, desc: noteDesc, archive: isArchive, delete: isDelete) { isSuccess in
+        NoteService.shared.updateNotes(id: noteId, title: noteTitle, desc: noteDesc, archive: isArchive, delete: isDelete, reminder: isReminder) { isSuccess in
             if isSuccess { self.navigationController?.popViewController(animated: true) }
         }
     }
@@ -376,8 +342,7 @@ class NoteDetailVC: UIViewController {
     private func setReminderIcon() {
         
         if isReminder {
-            
-            
+            reminderButton = UIBarButtonItem(image: UIImage(systemName: "bell.fill"), style: .plain, target: self, action: #selector(reminderAction))
         }
         else {
             reminderButton = UIBarButtonItem(image: UIImage(systemName: "bell"), style: .plain, target: self, action: #selector(reminderAction))

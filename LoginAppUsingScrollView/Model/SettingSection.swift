@@ -29,16 +29,14 @@ enum UserInformationOption: Int, CaseIterable, SectionType {
     
     case Username
     case Email
-    case Logout
     
     var controlSwtich: Bool { return false}
 
     var description: String {
         
         switch self {
-        case .Username: return UserService().getUsername()
-        case .Email: return UserService().getEmail()
-        case .Logout: return "Log out"
+        case .Username: return UserService.shared.getUsername()
+        case .Email: return UserService.shared.getEmail()
         }
     }
 }

@@ -12,7 +12,6 @@ class SettingCell: UITableViewCell {
     // Mark: Properties
     
     var sectionType: SectionType? {
-        
         didSet {
             guard let sectionType = sectionType else { return}
             textLabel?.text = sectionType.description

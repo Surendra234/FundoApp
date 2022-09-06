@@ -12,7 +12,6 @@ private let reuseIdentifier = "SettingsCell"
 
 class ProfileVC: UIViewController {
     
-
     var tableView: UITableView!
     
     let profileImage: UIImageView = {
@@ -42,7 +41,7 @@ class ProfileVC: UIViewController {
         
         setUpConstratin()
         configureTableView()
-    
+
         UserService.getUserInfo { user in
    
             if user != nil {

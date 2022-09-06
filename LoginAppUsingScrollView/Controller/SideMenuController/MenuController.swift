@@ -24,7 +24,6 @@ class MenuController: UIViewController {
         configureTableView()
     }
 
-    
     // Handler
     
     func configureTableView() {
@@ -34,7 +33,7 @@ class MenuController: UIViewController {
         tableView.dataSource = self
         
         tableView.register(MenuOptionCell.self, forCellReuseIdentifier: reuseIdentifire)
-        tableView.backgroundColor = .secondarySystemBackground
+        tableView.backgroundColor = .white
         tableView.separatorStyle = .none
         tableView.rowHeight = 80
         
@@ -50,7 +49,7 @@ class MenuController: UIViewController {
 extension MenuController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
+        return 5
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -58,7 +57,7 @@ extension MenuController: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifire, for: indexPath) as! MenuOptionCell
         
         let menuOption = MenuOption(rawValue: indexPath.row)
-        cell.backgroundColor = .secondarySystemBackground
+        cell.backgroundColor = .white
         cell.descriptionLable.text = menuOption?.description
         cell.iconImgView.image = menuOption?.image
         return cell

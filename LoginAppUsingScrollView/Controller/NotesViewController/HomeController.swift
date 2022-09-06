@@ -260,7 +260,6 @@ extension HomeController: UICollectionViewDelegateFlowLayout {
 }
 
 
-
 extension HomeController: UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
@@ -271,6 +270,7 @@ extension HomeController: UISearchBarDelegate {
         }
         
         isSearching = true
+        
         myColletionView.reloadData()
     }
     

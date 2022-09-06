@@ -69,7 +69,6 @@ class ContainerControllerVC: UIViewController {
         
         if shouldExpand {
             // show menu
-            
             UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: .curveEaseInOut, animations: {
                 
                 self.centerController.view.frame.origin.x = self.centerController.view.frame.width - 80
@@ -78,7 +77,6 @@ class ContainerControllerVC: UIViewController {
         }
         else {
             // hide menu
-            
             UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: .curveEaseInOut, animations: {
                 self.centerController.view.frame.origin.x = 0
             }) { (_) in
@@ -102,7 +100,9 @@ class ContainerControllerVC: UIViewController {
             
         case .Deleted:
             self.navigationController?.pushViewController(Constant.Delete.deleteNote, animated: true)
-            print("Deleted Notes")
+            
+        case .ReminderOption:
+            self.navigationController?.pushViewController(Constant.ReminderOption.reminderNote, animated: true)
             
         case .SignOut:
             print("SignOut")

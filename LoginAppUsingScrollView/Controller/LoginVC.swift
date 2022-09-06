@@ -27,6 +27,7 @@ class LoginVC: UIViewController {
         
         scrollView.isScrollEnabled = true
         scrollView.contentSize = CGSize(width: UIScreen.main.bounds.width, height: 1000)
+        passwordTextField.isSecureTextEntry = true
     }
     
     
@@ -42,7 +43,8 @@ class LoginVC: UIViewController {
         Auth.auth().signIn(withEmail: email, password: password) { (result, err) in
             
             if err != nil {
-                //print("Login error")
+                
+                print(err?.localizedDescription as Any)
                 self.openAlert(title: "Alert", message: "Login Detail not match", alertStyle: .alert, actionTitles: ["Okay"], actionStyles: [.default], actions: [{_ in }])
             } else {
                 
@@ -74,7 +76,7 @@ class LoginVC: UIViewController {
         GIDSignIn.sharedInstance.signIn(with: config, presenting: self) { [unowned self] user, error in
             
             if error != nil {
-                //..
+                print(error?.localizedDescription as Any)
                 return
             }
             
@@ -91,6 +93,7 @@ class LoginVC: UIViewController {
                 
                 if error != nil { return }
                 else {
+                    
                     let homeDashboard = ContainerControllerVC()
                     self.navigationController?.pushViewController(homeDashboard, animated: true)}
             }

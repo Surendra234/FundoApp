@@ -68,7 +68,7 @@ class SignUpVC: UIViewController {
                             
                             // Mark: SignUp Succesfully
                             //print("Navigation code")
-                            self.uplodeImage(username: username, email: email, password: password)}
+                            self.setUserInformation(username: username, email: email, password: password)}
                         
                         else { print("Password does not match")}
                     }
@@ -91,7 +91,7 @@ class SignUpVC: UIViewController {
     
     // Mark: Uplode profile image
     
-    private func uplodeImage(username: String, email: String, password: String) {
+    private func setUserInformation(username: String, email: String, password: String) {
         
         guard let profileImg = imageProfile.image else { return }
         
@@ -131,8 +131,9 @@ extension SignUpVC: UINavigationControllerDelegate, UIImagePickerControllerDeleg
             present(imgPicker, animated: true)
         }
     }
+    
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        if let img = info[.originalImage] as? UIImage {
+        if let img =       info[.originalImage] as? UIImage {
             imageProfile.image = img
         }
         dismiss(animated: true)

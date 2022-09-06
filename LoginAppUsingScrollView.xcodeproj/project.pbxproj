@@ -187,26 +187,23 @@
 		841B945A288AFDDE00CA760A /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				8447C49D288EC01C00639F41 /* SideMenuController */,
+				84F2246328AAE03700AEC11B /* SideMenuOptionFiles */,
+				8485A9FF2899849800258386 /* NotesViewController */,
 				84333D39288A883A008F03D3 /* LoginVC.swift */,
 				841B945D288B038C00CA760A /* SignUpVC.swift */,
 				842E30D52892853C0086A85B /* FBLoginVC.swift */,
+				844D819B28A25941006AE2A4 /* ProfileVC.swift */,
 			);
 			path = Controller;
-			sourceTree = "<group>";
-		};
-		841F60C728A806F00094C7B0 /* ArchiveNotes */ = {
-			isa = PBXGroup;
-			children = (
-				841F2EA9289E508A00EF11FA /* ArchiveNotesVC.swift */,
-			);
-			path = ArchiveNotes;
 			sourceTree = "<group>";
 		};
 		842E30D7289298D80086A85B /* view */ = {
 			isa = PBXGroup;
 			children = (
-				84333D3B288A883B008F03D3 /* Main.storyboard */,
-				84333D40288A883E008F03D3 /* LaunchScreen.storyboard */,
+				8485881728966216007D28D9 /* ListCell.swift */,
+				84A88AE828A2D0550065E0EE /* SettingCell.swift */,
+				84BC836A2892A84100A372B2 /* MenuOptionCell.swift */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -236,17 +233,15 @@
 		84333D34288A883A008F03D3 /* LoginAppUsingScrollView */ = {
 			isa = PBXGroup;
 			children = (
+				84BC836C2892B28E00A372B2 /* Model */,
+				842E30D7289298D80086A85B /* view */,
+				841B945A288AFDDE00CA760A /* Controller */,
+				849AAB9128993289005D0F81 /* SupportingFiles */,
 				84D1EF80288AB4850094DAAD /* Exctension */,
 				84411549288F03900057C92A /* Utils */,
-				849AAB9128993289005D0F81 /* SupportingFiles */,
 				8442BC1A28A20CC200109A5B /* NetworkCall */,
-				84BC836C2892B28E00A372B2 /* Model */,
-				8447C49D288EC01C00639F41 /* SideMenuController */,
-				84F2246328AAE03700AEC11B /* SideMenuOptionFiles */,
-				8485A9FF2899849800258386 /* NotesViewController */,
-				84A88AE728A2D0060065E0EE /* ProfileSetting */,
-				841B945A288AFDDE00CA760A /* Controller */,
-				842E30D7289298D80086A85B /* view */,
+				84333D3B288A883B008F03D3 /* Main.storyboard */,
+				84333D40288A883E008F03D3 /* LaunchScreen.storyboard */,
 				84333D3E288A883E008F03D3 /* Assets.xcassets */,
 				8465A9A9288CF6500017DA75 /* GoogleService-Info.plist */,
 				84333D43288A883E008F03D3 /* Info.plist */,
@@ -295,7 +290,6 @@
 			children = (
 				8447C49E288EC07100639F41 /* ContainerControllerVC.swift */,
 				8447C4A2288EC1D100639F41 /* MenuController.swift */,
-				84BC836A2892A84100A372B2 /* MenuOptionCell.swift */,
 			);
 			path = SideMenuController;
 			sourceTree = "<group>";
@@ -305,19 +299,9 @@
 			children = (
 				8447C4A0288EC1B500639F41 /* HomeController.swift */,
 				848336BA2896A2F5004EB6CE /* NoteDetailVC.swift */,
-				8485881728966216007D28D9 /* ListCell.swift */,
 				84C51E9728A56A3100F69354 /* LoadMoreActivityIndicator.swift */,
 			);
 			path = NotesViewController;
-			sourceTree = "<group>";
-		};
-		848F59B028AA4F3E00151CC4 /* Reminder */ = {
-			isa = PBXGroup;
-			children = (
-				840B854B28ABE50A0035F0A7 /* ReminderVC.swift */,
-				848F59B528AA5C6F00151CC4 /* SetReminderVC.swift */,
-			);
-			path = Reminder;
 			sourceTree = "<group>";
 		};
 		849AAB9128993289005D0F81 /* SupportingFiles */ = {
@@ -327,15 +311,6 @@
 				84333D37288A883A008F03D3 /* SceneDelegate.swift */,
 			);
 			path = SupportingFiles;
-			sourceTree = "<group>";
-		};
-		84A88AE728A2D0060065E0EE /* ProfileSetting */ = {
-			isa = PBXGroup;
-			children = (
-				84A88AE828A2D0550065E0EE /* SettingCell.swift */,
-				844D819B28A25941006AE2A4 /* ProfileVC.swift */,
-			);
-			path = ProfileSetting;
 			sourceTree = "<group>";
 		};
 		84BC836C2892B28E00A372B2 /* Model */ = {
@@ -359,20 +334,13 @@
 			path = Exctension;
 			sourceTree = "<group>";
 		};
-		84F2246028AAC36F00AEC11B /* DeletedNotes */ = {
-			isa = PBXGroup;
-			children = (
-				84F2246128AAC3AD00AEC11B /* DeletedNotesVC.swift */,
-			);
-			path = DeletedNotes;
-			sourceTree = "<group>";
-		};
 		84F2246328AAE03700AEC11B /* SideMenuOptionFiles */ = {
 			isa = PBXGroup;
 			children = (
-				841F60C728A806F00094C7B0 /* ArchiveNotes */,
-				84F2246028AAC36F00AEC11B /* DeletedNotes */,
-				848F59B028AA4F3E00151CC4 /* Reminder */,
+				841F2EA9289E508A00EF11FA /* ArchiveNotesVC.swift */,
+				84F2246128AAC3AD00AEC11B /* DeletedNotesVC.swift */,
+				840B854B28ABE50A0035F0A7 /* ReminderVC.swift */,
+				848F59B528AA5C6F00151CC4 /* SetReminderVC.swift */,
 			);
 			path = SideMenuOptionFiles;
 			sourceTree = "<group>";

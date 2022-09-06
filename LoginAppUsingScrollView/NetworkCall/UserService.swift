@@ -10,6 +10,10 @@ import Firebase
 
 class UserService {
     
+    static let shared = UserService()
+    var username: String?
+    var emain: String?
+    
     static func getUserInfo(completion: @escaping (UserDetail?) -> Void) {
         
         //let myInformation = UserDefaults.standard
@@ -40,29 +44,16 @@ class UserService {
             
             let userInfo = UserDetail(username: username, email: email, photoUrl: photoURl)
             
-//            myInformation.set(username, forKey: "name")
-//            myInformation.set(email, forKey: "email")
-            
             completion(userInfo)
         }
     }
     
     func getUsername() -> String {
-        
-        var name: String?
-        UserService.getUserInfo { user in
-            name = user?.username
-        }
-        return name ?? "surendra"
+
+        return UserService.shared.username ?? "Surendra"
     }
-    
+
     func getEmail() -> String {
-        
-        var email: String?
-        
-        UserService.getUserInfo { user in
-            email = user?.email
-        }
-        return email ?? "surendra@gmail.com"
+        return UserService.shared.emain ?? "Surendra@gmail.com"
     }
 }
